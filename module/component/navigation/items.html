@@ -1,0 +1,12 @@
+
+<ul class="navigation_items">
+    <li class="navigation_item" :class="{'navigation_item__branch': item.children, 'navigation_item__active': item.active}" v-for="item in items">
+        <template v-if="item.link">
+            <a v-link="{path: item.link, activeClass: 'navigation_link__active'}" data-item-name="{{item.name}}" class="navigation_link" @click="selectItem(item.name)"><i class="am-icon-{{icon(item.name)}} am-icon-fw navigation_icon"></i>{{item.label}}</a>
+        </template>
+        <template v-else>
+            <a href="javascript:void(0)" class="navigation_link" @click="selectItem(item.name)"><i class="am-icon-{{icon(item.name)}} am-icon-fw navigation_icon"></i>{{item.label}}</a>
+        </template>
+        <items v-if="item.children" :items="item.children" :parent="item.name" v-on:sub-item-selected="onSubItemSelected(item.name)"></item>
+    </li>
+</ul>

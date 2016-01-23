@@ -1,0 +1,54 @@
+
+<div class="page page-login">
+    <div class="am-container">
+        <div class="page-login_panel">
+
+            <validator name="validation">
+
+                <form class="am-form" action="#" @submit.prevent="submit($validation)">
+                    
+                    <div class="am-form-group am-form-icon">
+                        <i class="am-icon-user"></i>
+                        <input  type="text" 
+                                placeholder="用户名" 
+                                maxlength="16"
+                                class="am-form-field am-input-sm" 
+                                @blur="onUsernameInput"
+                                v-model="form.username"
+                                v-validate:username="{required:true,minlength:5}">
+
+                        <div class="am-form-error">
+                            <span v-show="$validation.touched && $validation.username.required">请输入用户名.</span>
+                            <span v-show="$validation.touched && (!$validation.username.required) && $validation.username.minlength">不得少于5个字符.</span>
+                        </div>
+                    </div>
+                    <div class="am-form-group am-form-icon">
+                        <i class="am-icon-key"></i>
+                        <input  type="password" 
+                                placeholder="密码" 
+                                maxlength="16"
+                                class="am-form-field am-input-sm" 
+                                v-model="form.password"
+                                v-validate:password="{required:true,minlength:6}">
+                        <div class="am-form-error">
+                            <span v-show="$validation.touched && $validation.password.required">请输入密码.</span>
+                            <span v-show="$validation.touched && (!$validation.password.required)&& $validation.password.minlength">不得少于6个字符.</span>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <select class="am-form-field am-input-sm" 
+                                v-if="roles && roles.length > 1" 
+                                v-model="form.roleId"
+                                v-validate:role-id="{required:true}">
+
+                            <option value="{{role.id}}" v-for="role in roles">{{role.name}}</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="am-btn am-btn-primary am-btn-block" v-disable="$validation.invalid">登录</button>
+                </form>
+
+            </validator>
+
+        </div>
+    </div>
+</div>

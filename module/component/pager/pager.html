@@ -1,0 +1,9 @@
+
+<div class="pager">
+{{currentPage}}
+    <ul class="am-pagination">
+        <li v-for="idx in pages" :class="{'am-active': (getCurrentPage() == (idx + 1))}">
+            <a v-link="{path: url, query: { page: (idx + 1)}}" >{{idx + 1}}</a>
+        </li>
+    </ul>
+</div>
