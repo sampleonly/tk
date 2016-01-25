@@ -1,0 +1,12 @@
+
+
+<div class="breadcrumb">
+    <div class="container">
+        <template v-for="item in items">
+            <a v-link="{path: item.link, activeClass:'breadcrumb_link'}" class="breadcrumb_item" :class="{breadcrumb_current: isLast($index)}">
+                {{item.name}}
+            </a>
+            <i v-if="!isLast($index)" class="fa fa-chevron-right breadcrumb_delimiter"></i>
+        </template>
+    </div>
+</div>

@@ -14,7 +14,7 @@
                                 maxlength="16"
                                 class="am-form-field am-input-sm" 
                                 @blur="onUsernameInput"
-                                v-model="form.username"
+                                v-model="username"
                                 v-validate:username="{required:true,minlength:5}">
 
                         <div class="am-form-error">
@@ -28,7 +28,7 @@
                                 placeholder="密码" 
                                 maxlength="16"
                                 class="am-form-field am-input-sm" 
-                                v-model="form.password"
+                                v-model="password"
                                 v-validate:password="{required:true,minlength:6}">
                         <div class="am-form-error">
                             <span v-show="$validation.touched && $validation.password.required">请输入密码.</span>
@@ -38,7 +38,7 @@
                     <div class="am-form-group">
                         <select class="am-form-field am-input-sm" 
                                 v-if="roles && roles.length > 1" 
-                                v-model="form.roleId"
+                                v-model="roleId"
                                 v-validate:role-id="{required:true}">
 
                             <option value="{{role.id}}" v-for="role in roles">{{role.name}}</option>

@@ -3,12 +3,12 @@
     
     <div class="crud_head">
         <h1 class="crud_title">人才服务/新闻</h1>
-        <a v-link="{path: '/rcfw/news/edit'}" class="am-btn am-btn-primary am-btn-sm">新增</a>
     </div>
 
     <section class="am-panel am-panel-c">
         <div class="am-panel-bd">
-            <table class="am-table am-table-bd am-table-c ">
+            <a v-link="{path: '/rcfw/news/edit'}" class="am-btn am-btn-primary am-btn-sm am-margin-bottom am-fr"><i class="am-icon-plus"></i> 新增</a>
+            <table class="am-table am-table-bd am-table-c am-table-bordered">
                 <thead>
                     <tr>
                         <th>标题</th>
@@ -23,13 +23,13 @@
                         <td>{{item.title}}</td>
                         <td>{{item.count}}</td>
                         <td>{{item.time}}</td>
-                        <td>{{item.type | type}}</td>
+                        <td><span class="am-badge am-badge-warning">{{item.type | type}}</span></td>
                         <td>
                             <div class="am-btn-group am-btn-group-xs">
-                                <a v-link="{path: '/rcfw/news/edit/' + item.id}" class="am-btn am-btn-default am-btn-default-white am-btn-xs am-text-secondary">
+                                <a v-link="{path: '/rcfw/news/edit/' + item.id}" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
                                     <span class="am-text-primary"><i class="am-icon-pencil-square-o"></i> 编辑</span>
                                 </a>
-                                <a @click.prevent="remove(item.id)" class="am-btn am-btn-default am-btn-default-white am-btn-xs am-text-danger am-hide-sm-only">
+                                <a @click.prevent="remove(item.id)" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
                                     <span class="am-text-danger"><i class="am-icon-trash-o"></i> 删除</span>
                                 </a>
                             </div>

@@ -1,9 +1,9 @@
 
 
-<div class="rcfw-news">
+<div class="rcfw-policy">
     
     <div class="crud_head">
-        <h1 class="crud_title">人才服务/新闻/编辑</h1>
+        <h1 class="crud_title">人才服务/政策/编辑</h1>
     </div>
 
     <section class="am-panel am-panel-c">
@@ -29,22 +29,21 @@
                 </div>
                 <div class="am-g am-margin-top">
                     <div class="am-u-md-2 am-text-right">
+                        原文链接
+                    </div>
+                    <div class="am-u-md-6 am-u-end">
+                        <input type="text" name="link" v-model="formData.link" class="am-input-sm" placeholder="原文链接">
+                    </div>
+                </div>
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-2 am-text-right">
                         类型
                     </div>
                     <div class="am-u-md-2 am-u-end">
                         <select name="type" v-model="formData.type" class="am-input-sm">
-                            <option value="1" selected>新闻速递</option>
-                            <option value="2">政策资讯</option>
-                            <option value="3">通知公告</option>
+                            <option value="1" selected>申报入口</option>
+                            <option value="2">政策兑现</option>
                         </select>
-                    </div>
-                </div>
-                <div class="am-g am-margin-top-sm">
-                    <div class="am-u-md-2 am-text-right admin-form-text">
-                        内容
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                    <veditor name="content" :content.sync="formData.content"></veditor>
                     </div>
                 </div>
             </form>
