@@ -1,0 +1,1 @@
+"use strict";module.exports=function(e,t){t.write("Hello world "),t.end("The time is "+Date.now())};

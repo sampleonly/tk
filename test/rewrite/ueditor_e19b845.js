@@ -1,0 +1,1 @@
+"use strict";function uploadimg(i,t){t.write(JSON.stringify({original:"",name:"",url:"",size:"",type:"",state:""}))}module.exports=function(i,t,a){var e=(i.method,i.param("action"));switch(e){case"uploadimg":uploadimg(i,t,a)}t.end()};

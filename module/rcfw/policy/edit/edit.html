@@ -41,8 +41,7 @@
                     </div>
                     <div class="am-u-md-2 am-u-end">
                         <select name="type" v-model="formData.type" class="am-input-sm">
-                            <option value="1" selected>申报入口</option>
-                            <option value="2">政策兑现</option>
+                            <option value="{{$index + 1}}" v-for="type in types" :selected="$index == 0">{{type}}</option>
                         </select>
                     </div>
                 </div>

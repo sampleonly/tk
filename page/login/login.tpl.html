@@ -44,7 +44,7 @@
                             <option value="{{role.id}}" v-for="role in roles">{{role.name}}</option>
                         </select>
                     </div>
-                    <button type="submit" class="am-btn am-btn-primary am-btn-block" v-disable="$validation.invalid">登录</button>
+                    <button type="submit" class="am-btn am-btn-primary am-btn-block" :disabled="$validation.invalid">登录</button>
                 </form>
 
             </validator>
