@@ -1,9 +1,9 @@
 
 
-<div class="rcfw-news">
+<div class="crud zwkc-zwzx-edit">
     
     <div class="crud_head">
-        <h1 class="crud_title">人才服务 / 新闻 / 编辑</h1>
+        <h1 class="crud_title">政务快车 / 政务资讯 / 编辑</h1>
     </div>
 
     <section class="am-panel am-panel-c">
@@ -33,7 +33,7 @@
                     </div>
                     <div class="am-u-md-2 am-u-end">
                         <select name="type" v-model="formData.type" class="am-input-sm">
-                            <option value="{{$index + 1}}" v-for="type in types" :selected="$index == 0">{{type}}</option>
+                            <option value="{{$index + 1}}" v-if="$index > 0" v-for="type in types" :selected="$index == 1">{{type}}</option>
                         </select>
                     </div>
                 </div>
