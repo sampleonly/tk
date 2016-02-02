@@ -15,7 +15,6 @@
                         <th>浏览量</th>
                         <th>发布时间</th>
                         <th>类型</th>
-                        <th>审核状态</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -24,14 +23,7 @@
                         <td>{{item.title}}</td>
                         <td>{{item.count}}</td>
                         <td>{{item.time}}</td>
-                        <td><span class="am-badge am-badge-warning">{{getTypeName(item.type)}}</span></td>
-                        <td>
-                            <span 
-                                class="am-badge" 
-                                :class="{'am-badge-success': item.status == 1,'am-badge-danger': item.status == 2}">
-                                {{getStatusName(item.status)}}
-                            </span>
-                        </td>
+                        <td><span class="am-badge am-badge-warning">{{item.type | dict 'zwkc.zwzx.type'}}</span></td>
                         <td>
                             <div class="am-btn-group am-btn-group-xs">
                                 <a v-link="{path: '/zwkc/zwzx/edit/' + item.id}" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
@@ -40,14 +32,6 @@
                                 <a @click.prevent="remove(item.id)" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
                                     <span class="am-text-danger"><i class="am-icon-trash-o"></i> 删除</span>
                                 </a>
-                                <template v-if="item.status==0">
-                                    <a @click.prevent="pass(item.id)" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
-                                        <span class="am-text-warning"><i class="am-icon-check"></i> 通过</span>
-                                    </a>
-                                    <a @click.prevent="reject(item.id)" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
-                                        <span class="am-text-warning"><i class="am-icon-close"></i> 拒绝</span>
-                                    </a>
-                                </template>
                             </div>
                         </td>
                     </tr>

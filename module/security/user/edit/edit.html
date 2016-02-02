@@ -1,47 +1,45 @@
 
 
-<div class="rcfw-policy">
+<div class="crud zwkc-zwzx-edit">
     
     <div class="crud_head">
-        <h1 class="crud_title">人才服务 / 政策 / 编辑</h1>
+        <h1 class="crud_title">系统安全 / 用户管理 / 创建用户</h1>
     </div>
 
     <section class="am-panel am-panel-c">
         <div class="am-panel-bd">
 
             <form class="am-form">
-                <input type="hidden" name="id" value="{{id}}">
+                <input type="hidden" value="{{id}}">
                 <div class="am-g am-margin-top">
                     <div class="am-u-md-2 am-text-right">
-                        标题
+                        用户名
                     </div>
-                    <div class="am-u-md-6 am-u-end">
-                        <input type="text" name="title" v-model="formData.title" class="am-input-sm" placeholder="标题">
+                    <div class="am-u-md-3 am-u-end">
+                        <input type="text" v-model="username" class="am-input-sm" placeholder="用户名">
                     </div>
                 </div>
                 <div class="am-g am-margin-top">
                     <div class="am-u-md-2 am-text-right">
-                        摘要
+                        密码
                     </div>
-                    <div class="am-u-md-6 am-u-end">
-                        <textarea name="summary" rows="8" v-model="formData.summary" placeholder="摘要" class="am-input-sm"></textarea>
+                    <div class="am-u-md-3 am-u-end">
+                        <button v-if="!password" @click="resetPassword" class="am-btn am-btn-danger am-btn am-btn-xs">重置密码</button>
+                        <input v-if="password" type="text" v-model="password" class="am-input-sm">
+                    </div>
+                </div>
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-3 am-u-md-offset-2 am-u-end">
+                        <button class="am-btn am-btn-warning am-btn am-btn-xs">设置角色</button>
                     </div>
                 </div>
                 <div class="am-g am-margin-top">
                     <div class="am-u-md-2 am-text-right">
-                        原文链接
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        <input type="text" name="link" v-model="formData.link" class="am-input-sm" placeholder="原文链接">
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        类型
+                        角色
                     </div>
                     <div class="am-u-md-2 am-u-end">
-                        <select name="type" v-model="formData.type" class="am-input-sm">
-                            <option value="{{$key}}" v-for="type in types">{{type}}</option>
+                        <select name="type" v-model="type" class="am-input-sm">
+                            <option value="{{$index + 1}}" v-if="$index > 0" v-for="type in types" :selected="$index == 1">{{type}}</option>
                         </select>
                     </div>
                 </div>

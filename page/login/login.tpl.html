@@ -13,7 +13,6 @@
                                 placeholder="用户名" 
                                 maxlength="16"
                                 class="am-form-field am-input-sm" 
-                                @blur="onUsernameInput"
                                 v-model="username"
                                 v-validate:username="{required:true,minlength:5}">
 
@@ -34,15 +33,6 @@
                             <span v-show="$validation.touched && $validation.password.required">请输入密码.</span>
                             <span v-show="$validation.touched && (!$validation.password.required)&& $validation.password.minlength">不得少于6个字符.</span>
                         </div>
-                    </div>
-                    <div class="am-form-group">
-                        <select class="am-form-field am-input-sm" 
-                                v-if="roles && roles.length > 1" 
-                                v-model="roleId"
-                                v-validate:role-id="{required:true}">
-
-                            <option value="{{role.id}}" v-for="role in roles">{{role.name}}</option>
-                        </select>
                     </div>
                     <button type="submit" class="am-btn am-btn-primary am-btn-block" :disabled="$validation.invalid">登录</button>
                 </form>

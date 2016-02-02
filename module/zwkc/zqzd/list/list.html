@@ -1,13 +1,13 @@
 
-<div class="crud rcfw-policy">
+<div class="crud zwkc-zqzd-list">
     
     <div class="crud_head">
-        <h1 class="crud_title">人才服务 / 政策</h1>
+        <h1 class="crud_title">政务快车 / 政企直达</h1>
     </div>
 
     <section class="am-panel am-panel-c">
         <div class="am-panel-bd">
-            <a v-link="{path: '/rcfw/policy/edit'}" class="am-btn am-btn-primary am-btn-sm am-margin-bottom"><i class="am-icon-plus"></i> 新增</a>
+            <a v-link="{path: '/zwkc/zqzd/edit'}" class="am-btn am-btn-primary am-btn-sm am-margin-bottom"><i class="am-icon-plus"></i> 新增</a>
             <table class="am-table am-table-bd am-table-c am-table-bordered">
                 <thead>
                     <tr>
@@ -23,10 +23,10 @@
                         <td>{{item.title}}</td>
                         <td>{{item.count}}</td>
                         <td>{{item.time}}</td>
-                        <td><span class="am-badge am-badge-warning">{{item.type | dict 'rcfw.policy.type'}}</span></td>
+                        <td><span class="am-badge am-badge-warning">{{item.type | dict 'zwkc.zqzd.type'}}</span></td>
                         <td>
                             <div class="am-btn-group am-btn-group-xs">
-                                <a v-link="{path: '/rcfw/policy/edit/' + item.id}" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
+                                <a v-link="{path: '/zwkc/zqzd/edit/' + item.id}" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
                                     <span class="am-text-primary"><i class="am-icon-pencil-square-o"></i> 编辑</span>
                                 </a>
                                 <a @click.prevent="remove(item.id)" class="am-btn am-btn-default am-btn-default-white am-btn-xs">

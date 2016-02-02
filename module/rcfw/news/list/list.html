@@ -23,7 +23,7 @@
                         <td>{{item.title}}</td>
                         <td>{{item.count}}</td>
                         <td>{{item.time}}</td>
-                        <td><span class="am-badge am-badge-warning">{{item.type | type}}</span></td>
+                        <td><span class="am-badge am-badge-warning">{{item.type | dict 'rcfw.news.type'}}</span></td>
                         <td>
                             <div class="am-btn-group am-btn-group-xs">
                                 <a v-link="{path: '/rcfw/news/edit/' + item.id}" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
