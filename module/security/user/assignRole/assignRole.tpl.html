@@ -1,0 +1,25 @@
+
+
+<div>
+    <am-panel title="分配角色">
+        <div slot="body">
+            <div class="am-g">
+                <div class="am-u-md-8 am-u-md-offset-2">
+                    <div class="am-u-md-4" v-for="role in roles">
+                        <label>
+                            <input type="checkbox" value="role.id" :checked="role.assigned" @click="toggle(role.id)"> {{role.roleName}}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="am-g">
+                    <div class="am-u-md-8 am-u-md-offset-2">
+                        <div class="am-u-md-4">
+                            <button @click="submit" class="am-btn am-btn-primary am-btn">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </am-panel>
+</div>

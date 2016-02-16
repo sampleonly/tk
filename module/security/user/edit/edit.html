@@ -1,13 +1,8 @@
 
+<div>
+    <am-panel title="基本信息">
 
-<div class="crud zwkc-zwzx-edit">
-    
-    <div class="crud_head">
-        <h1 class="crud_title">系统安全 / 用户管理 / 创建用户</h1>
-    </div>
-
-    <section class="am-panel am-panel-c">
-        <div class="am-panel-bd">
+        <div slot="body">
 
             <form class="am-form">
                 <input type="hidden" value="{{id}}">
@@ -15,32 +10,32 @@
                     <div class="am-u-md-2 am-text-right">
                         用户名
                     </div>
-                    <div class="am-u-md-3 am-u-end">
-                        <input type="text" v-model="username" class="am-input-sm" placeholder="用户名">
+                    <div class="am-u-md-2 am-u-end">
+                        <input type="text" v-model="username" class="am-input-sm" placeholder="用户名" :readonly="!!id">
                     </div>
                 </div>
                 <div class="am-g am-margin-top">
                     <div class="am-u-md-2 am-text-right">
-                        密码
-                    </div>
-                    <div class="am-u-md-3 am-u-end">
-                        <button v-if="!password" @click="resetPassword" class="am-btn am-btn-danger am-btn am-btn-xs">重置密码</button>
-                        <input v-if="password" type="text" v-model="password" class="am-input-sm">
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-3 am-u-md-offset-2 am-u-end">
-                        <button class="am-btn am-btn-warning am-btn am-btn-xs">设置角色</button>
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        角色
+                        昵称
                     </div>
                     <div class="am-u-md-2 am-u-end">
-                        <select name="type" v-model="type" class="am-input-sm">
-                            <option value="{{$index + 1}}" v-if="$index > 0" v-for="type in types" :selected="$index == 1">{{type}}</option>
-                        </select>
+                        <input type="text" v-model="nickname" class="am-input-sm" placeholder="昵称">
+                    </div>
+                </div>
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-2 am-text-right">
+                        电子邮箱
+                    </div>
+                    <div class="am-u-md-2 am-u-end">
+                        <input type="text" v-model="email" class="am-input-sm" placeholder="电子邮箱">
+                    </div>
+                </div>
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-2 am-text-right">
+                        联系电话
+                    </div>
+                    <div class="am-u-md-2 am-u-end">
+                        <input type="text" v-model="tel" class="am-input-sm" placeholder="联系电话">
                     </div>
                 </div>
             </form>
@@ -50,7 +45,6 @@
                     <button @click="submit" class="am-btn am-btn-primary am-btn">保存</button>
                 </div>
             </div>
-
         </div>
-    </section>
+    </am-panel>
 </div>

@@ -1,0 +1,11 @@
+
+<section class="am-panel" :class="[theme ? 'am-panel-' + theme : 'am-panel-default']">
+    <header class="am-panel-hd" v-if="title">
+        <h3 class="am-panel-title">
+            {{title}}
+        </h3>
+    </header>
+    <div class="am-panel-bd">
+        <slot name="body"></slot>
+    </div>
+</section>

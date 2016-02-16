@@ -1,35 +1,56 @@
 
-<div class="crud">
-    
-    <div class="crud_head">
-        <h1 class="crud_title">系统安全 / 用户管理</h1>
-    </div>
+<div>
+    <am-panel title="用户列表">
+        <div slot="body">
+            <div class="am-btn-toolbar">
+                <!-- 按钮组 -->
+                <div class="am-btn-group am-margin-bottom">
+                    <a v-link="{path: '/security/user/edit'}" class="am-btn am-btn-primary am-btn-sm">
+                        <i class="am-icon-plus"></i> 创建用户
+                    </a>
+                </div>
+            </div>
 
-    <section class="am-panel am-panel-c">
-        <div class="am-panel-bd">
-            <a v-link="{path: '/security/user/edit'}" class="am-btn am-btn-primary am-btn-sm am-margin-bottom"><i class="am-icon-plus"></i> 创建用户</a>
-            <table class="am-table am-table-bd am-table-c am-table-bordered">
+            <table class="am-table am-table-bordered">
                 <thead>
                     <tr>
                         <th>用户名</th>
+                        <th>昵称</th>
+                        <th>邮箱</th>
                         <th>创建时间</th>
                         <th>状态</th>
-                        <th>操作</th>
+                        <th width="220px">操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="item in items">
                         <td>{{item.username}}</td>
+                        <td>{{item.nickname}}</td>
+                        <td>{{item.email}}</td>
                         <td>{{item.createTime}}</td>
                         <td><span class="am-badge" :class="[item.status == 1 ? 'am-badge-primary' : 'am-badge-danger']">{{item.status | dict 'user.status'}}</span></td>
                         <td>
+                            <!-- 行内按钮组 -->
                             <div class="am-btn-group am-btn-group-xs">
-                                <a v-link="{path: '/security/user/edit/' + item.id}" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
+                                <a v-link="{path: '/security/user/edit/' + item.username}" class="am-btn am-btn-default">
                                     <span class="am-text-primary"><i class="am-icon-pencil-square-o"></i> 编辑</span>
                                 </a>
-                                <a @click.prevent="remove(item.id)" class="am-btn am-btn-default am-btn-default-white am-btn-xs">
+                                <a @click.prevent="remove(item.username)" class="am-btn am-btn-default">
                                     <span class="am-text-danger"><i class="am-icon-trash-o"></i> 删除</span>
                                 </a>
+
+                                <am-dropdown>
+                                    <li>
+                                        <a v-link="{name: 'assign-role', params: {username: item.username}}" class="am-btn am-btn-default am-btn-xs">
+                                            </i> 分配角色
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a @click.prevent="resetPassword(item.username)" class="am-btn am-btn-default am-btn-xs">
+                                            <i class="am-icon-key"></i> 重置密码
+                                        </a>
+                                    </li>
+                                </am-dropdown>
                             </div>
                         </td>
                     </tr>
@@ -37,8 +58,6 @@
             </table>
 
             <pager :total-count="totalCount"></pager>
-
         </div>
-    </section>
-
+    </am-panel>
 </div>
