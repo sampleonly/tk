@@ -1,1 +1,0 @@
-define("security/model",function(){});

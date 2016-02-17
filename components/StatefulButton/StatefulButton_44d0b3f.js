@@ -1,0 +1,1 @@
+define("components/StatefulButton/StatefulButton",function(t,e,n){"use strict";n.exports=Vue.extend({})});
