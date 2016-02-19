@@ -5,7 +5,7 @@
         <div slot="body">
             <div class="am-g">
                 <div class="am-u-md-8 am-u-md-offset-2">
-                    <div class="am-u-md-4" v-for="role in roles">
+                    <div class="am-u-md-4 am-u-end am-margin-bottom-xs" v-for="role in roles">
                         <label>
                             <input type="checkbox" value="role.id" :checked="role.assigned" @click="toggle(role.id)"> {{role.roleName}}
                         </label>
