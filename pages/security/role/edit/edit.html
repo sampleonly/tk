@@ -57,7 +57,7 @@
             <div slot="body">
                 <div class="am-g">
                     <div class="am-u-md-offset-2 am-u-md-8 am-u-end">
-                        <ui-permission-picker v-if="permissions && permitted" :permissions="permissions" :picked.sync="permitted"></ui-permission-picker>
+                        <ui-permission-picker v-if="permissionReady" :permissions="permissions" :picked.sync="permitted"></ui-permission-picker>
                     </div>
                 </div>
 

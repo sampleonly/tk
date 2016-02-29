@@ -1,0 +1,147 @@
+
+<div>
+
+    <!-- navbar -->
+    <header class="am-topbar">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li>
+                <a v-link="{path: '/rzbx/dksj'}">
+                    <i class="am-icon-list"></i> 列表
+                </a>
+            </li>
+        </ul>
+    </header>
+    <!-- navbar -->
+    <div class="am-g">
+        <!-- am-panel -->
+        <am-panel title="基本信息">
+            <div slot="body">
+                <form class="am-form">
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>ID</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.id}}
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>企业名称</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.company}}
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>手机号码</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.mobile}}
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>电子邮箱</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.email}}
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>联系人</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.name}}
+                        </div>
+                    </div>
+                    <!-- 
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>所属行业</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.industry}}
+                        </div>
+                    </div>
+                     -->
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>主要产品</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.product}}
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>上年销售收入</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.sales}}
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>当前贷款金额</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.loanAmount}}
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>当前贷款银行</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.loanBank | dict 'bank'}}
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>当前贷款利率</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            {{model.loanRate}} <span class="am-badge am-radius">年利率(%)</span>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>当前贷款凭证</b>
+                        </div>
+                        <div class="am-u-md-4 am-u-end">
+                            <img :src="model.loanCertificate" width=120 height=140>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>状态</b>
+                        </div>
+                        <div class="am-u-md-6 am-u-end">
+                            <select v-model="model.state" class="am-input-sm">
+                                <option value="{{$key}}" v-for="state in states">{{state}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="am-g am-margin-top" v-if="model.id">
+                        <div class="am-u-md-2 am-text-right">
+                            <b>备注</b>
+                        </div>
+                        <div class="am-u-md-6 am-u-end">
+                            <textarea rows="3" v-model="model.memo"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="am-g am-margin-top">
+                        <div class="am-u-md-offset-2 am-u-md-8 am-u-end">
+                            <button @click="submit" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-save"></i> 保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </am-panel>
+        <!-- am-panel -->
+    </div>
+</div>
