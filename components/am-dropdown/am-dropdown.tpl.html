@@ -1,7 +1,7 @@
 
 <div class="am-dropdown">
-    <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-ellipsis-v"></span></button>
+    <slot name="button"></slot>
     <ul class="am-dropdown-content">
-        <slot></slot>
+        <slot name="content"></slot>
     </ul>
 </div>

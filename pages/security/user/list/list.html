@@ -40,16 +40,23 @@
                                 </a>
 
                                 <am-dropdown>
-                                    <li>
-                                        <a v-link="{name: 'assign-role', params: {username: item.username}}" class="am-btn am-btn-default am-btn-xs">
-                                            </i> 分配角色
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a @click.prevent="resetPassword(item.username)" class="am-btn am-btn-default am-btn-xs">
-                                            <i class="am-icon-key"></i> 重置密码
-                                        </a>
-                                    </li>
+                                    <template slot="button">
+                                        <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle="">
+                                            <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span>
+                                        </button>
+                                    </template>
+                                    <template slot="content">
+                                        <li>
+                                            <a v-link="{name: 'assign-role', params: {username: item.username}}">
+                                                <i class="am-icon-group"></i>  分配角色
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a @click.prevent="resetPassword(item.username)">
+                                                <i class="am-icon-key"></i> 重置密码
+                                            </a>
+                                        </li>
+                                    </template>
                                 </am-dropdown>
                             </div>
                         </td>
