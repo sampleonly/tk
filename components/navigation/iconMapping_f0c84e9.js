@@ -1,0 +1,1 @@
+define("components/navigation/iconMapping",function(c,e,i){"use strict";i.exports={"default":"circle",ckzj:"diamond",rzbx:"money",xept:"suitcase",qyzl:"cubes",zwkc:"subway",rcfw:"graduation-cap",security:"lock"}});

@@ -1,0 +1,15 @@
+
+
+<div data-id="{{id}}" 
+     class="v-nav_node" 
+    :class="[isRoot ? 'v-nav_node__root': '', active ? 'v-nav_node__active': '', isBranch ? 'v-nav_node__branch': '', level ? 'v-nav_node__lev' + level: '']">
+
+    <a v-if="name" class="v-nav_link" v-link="{path: link, activeClass:'v-nav-node-active'}" @click="select">
+        <i v-if="icon" :class="icon"></i> {{name}}
+    </a>
+    <ul class="v-nav_children" v-if="isBranch">
+        <li v-for="child in children" class="v-nav_child">
+            <v-nav-node :name="child.name" :link="child.link" :children="child.children" :icon="child.icon" :level="level + 1" v-on:child-toggle="onChildToggle"></v-nav-node>
+        </li>
+    </ul>
+</div>
