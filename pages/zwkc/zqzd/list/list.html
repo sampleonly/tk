@@ -38,7 +38,7 @@
                 </tbody>
             </table>
 
-            <pager :total-count="totalCount"></pager>
+            <pager :page="$route.query.page" :total="totalCount" :route="$route"></pager>
 
         </div>
     </section>

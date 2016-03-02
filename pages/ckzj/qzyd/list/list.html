@@ -10,6 +10,7 @@
                         <th>标题</th>
                         <th>评论数</th>
                         <th>发布时间</th>
+                        <th width="100px" class="am-text-center">推荐 / 置顶</th>
                         <th width="220px">操作</th>
                     </tr>
                 </thead>
@@ -19,42 +20,33 @@
                         <td>{{item.title}}</td>
                         <td>{{item.comment}}</td>
                         <td>{{item.pubTime}}</td>
+                        <td class="am-text-center">
+                            <i class="am-text-lg am-icon-star" 
+                                style="cursor:pointer;" 
+                                :class="{'am-text-warning':item.isRecommended}"
+                                @click="recommend($index)"></i>
+                            
+                            <i class="am-text-lg am-icon-arrow-circle-up" 
+                                style="cursor:pointer;" 
+                                :class="{'am-text-warning':item.isTop}"
+                                @click="top($index)"></i>
+                        </td>
                         <td>
                             <!-- 行内按钮组 -->
                             <div class="am-btn-group am-btn-group-xs">
-                                <a v-link="{name: 'rzbx-bxyy-edit', params: {id: item.id}}" class="am-btn am-btn-default">
-                                    <span class="am-text-primary"><i class="am-icon-pencil-square-o"></i> 编辑</span>
+                                <a v-link="{name: 'ckzj-qzyd-detail', params: {id: item.id}}" class="am-btn am-btn-default">
+                                    <span class="am-text-primary"><i class="am-icon-pencil-square-o"></i> 查看</span>
                                 </a>
                                 <a @click.prevent="remove(item.id)" class="am-btn am-btn-default">
                                     <span class="am-text-danger"><i class="am-icon-trash-o"></i> 删除</span>
                                 </a>
-                                
-                                <am-dropdown>
-                                    <template slot="button">
-                                        <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle="">
-                                            <span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span>
-                                        </button>
-                                    </template>
-                                    <template slot="content">
-
-                                        <li>
-                                            <a v-link="{name: 'assign-role', params: {username: item.username}}">
-                                                推荐
-                                            </a>
-                                            <a v-link="{name: 'assign-role', params: {username: item.username}}">
-                                                置顶
-                                            </a>
-                                        </li>
-
-                                    </template>
-                                </am-dropdown>
                             </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <pager :total-count="totalCount"></pager>
+            <pager :page="$route.query.page" :total="totalCount" :route="$route"></pager>
         </div>
     </am-panel>
 </div>
