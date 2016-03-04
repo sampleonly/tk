@@ -1,18 +1,18 @@
 
-<div>
+<div class="am-g">
 
-    <!-- navbar -->
-    <header class="am-topbar">
-        <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li>
-                <a v-link="{path: '/ckzj/cyfd'}">
-                    <i class="am-icon-list"></i> 导师列表
-                </a>
-            </li>
-        </ul>
-    </header>
-    <!-- navbar -->
-    <div class="am-g">
+    <div class="am-u-md-12">
+        <!-- navbar -->
+        <header class="am-topbar">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li>
+                    <a v-link="{path: '/ckzj/cyfd'}">
+                        <i class="am-icon-list"></i> 导师列表
+                    </a>
+                </li>
+            </ul>
+        </header>
+        <!-- navbar -->
         <!-- am-panel -->
         <am-panel title="导师基本信息">
             <div slot="body">
@@ -176,28 +176,30 @@
             </div>
         </am-panel>
         <!-- am-panel -->
+    </div>
 
-        <!-- <am-panel title="咨询信息">
+    <div class="am-u-md-6">
+        <am-panel title="咨询信息">
             <div slot="body">
-                <ul class="am-comments-list">
-                    <li class="am-comment" v-for="consult in consults">
-                        <div class="am-comment-main am-margin-0">
-                            <header class="am-comment-hd">
-                                <h3 class="am-comment-title">{{consult.title}}</h3>
-                                <div class="am-comment-meta">
-                                    <time>{{consult.time}}</time>
-                                </div>
-                            </header>
-                            <div class="am-comment-bd">
-                                {{consult.content}}
-                            </div>
-                        </div>
+                <ul class="am-list am-list-static">
+                    <li v-for="consult in consults" track-by="id">
+                        <span class="am-badge am-badge-danger cursor-pointer" @click="removeConsult(consult.id)">
+                            <i class="am-icon-remove am-icon-fw"></i>
+                        </span>
+                        <span class="am-badge am-badge-warning cursor-pointer" @click="editConsult(consult.id)">
+                            <i class="am-icon-edit am-icon-fw"></i>
+                        </span>
+                        
+                        <div class="am-text-truncate">{{consult.title}}</div>
+
+                        <small>发表于 {{consult.time}}</small>
                     </li>
                 </ul>
-                <pager :total="model.comment" @paginate.pager="onPaginate"></pager>
+                <pager :total="consultsCount" @paginate.pager="onConsultPaginate" v-ref:consult-pager></pager>
             </div>
-        </am-panel> -->
-
+        </am-panel>
+    </div>
+    <div class="am-u-md-6">
         <!-- am-panel -->
         <am-panel title="评价信息">
             <div slot="body">
@@ -207,14 +209,13 @@
                             <i class="am-icon-remove am-icon-fw"></i>
                         </span>
                         
-                        {{evaluation.content}}
+                        <div class="am-text-truncate">{{evaluation.content}}</div>
                         
-                        <br><small class="">{{evaluation.user}} 发表于 {{evaluation.time}}</small>
+                        <small>{{evaluation.user}} 发表于 {{evaluation.time}}</small>
                     </li>
                 </ul>
                 <pager :total="evaluationsCount" @paginate.pager="onEvaluationPaginate" v-ref:evaluation-pager></pager>
             </div>
         </am-panel>
-
     </div>
 </div>

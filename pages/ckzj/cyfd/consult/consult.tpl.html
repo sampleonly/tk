@@ -1,0 +1,112 @@
+
+
+
+<div>
+
+    <!-- navbar -->
+    <header class="am-topbar">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li>
+                <a href="#" @click.prevent="back">
+                    <i class="am-icon-angle-left"></i> 导师详情
+                </a>
+            </li>
+        </ul>
+    </header>
+    <!--/ navbar -->
+
+    <div class="am-g">
+        <!-- am-panel -->
+        <am-panel title="咨询问题信息">
+            <div slot="body">
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-2 am-text-right">
+                        <b>ID</b>
+                    </div>
+                    <div class="am-u-md-6 am-u-end">
+                        {{model.id}}
+                    </div>
+                </div>
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-2 am-text-right">
+                        <b>标题</b>
+                    </div>
+                    <div class="am-u-md-6 am-u-end">
+                        {{model.title}}
+                    </div>
+                </div>
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-2 am-text-right">
+                        <b>发布时间</b>
+                    </div>
+                    <div class="am-u-md-6 am-u-end">
+                        {{model.time}}
+                    </div>
+                </div>
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-2 am-text-right">
+                        <b>浏览量</b>
+                    </div>
+                    <div class="am-u-md-6 am-u-end">
+                        {{model.count}}
+                    </div>
+                </div>
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-2 am-text-right">
+                        <b>标题</b>
+                    </div>
+                    <div class="am-u-md-6 am-u-end">
+                        {{model.title}}
+                    </div>
+                </div>
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-2 am-text-right">
+                        <b>内容</b>
+                    </div>
+                    <div class="am-u-md-6 am-u-end">
+                        {{model.content}}
+                    </div>
+                </div>
+            </div>
+        </am-panel>
+        <!--/ am-panel -->
+
+        <!-- am-panel -->
+        <am-panel title="回复">
+            <div slot="body">
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-offset-2 am-u-md-8 am-u-end">
+                        <textarea v-model="content" rows="3" class="am-form-field" placeholder="输入要回复的内容..."></textarea>
+                    </div>
+                </div>
+
+                <div class="am-g am-margin-top">
+                    <div class="am-u-md-offset-2 am-u-md-8 am-u-end">
+                        <button @click.prevent="reply" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-reply"></i> 回复</button>
+                    </div>
+                </div>
+            </div>
+        </am-panel>
+        <!--/ am-panel -->
+
+        <!-- am-panel -->
+        <am-panel title="评论列表">
+            <div slot="body">
+                <ul class="am-list am-list-static">
+                    <li v-for="comment in comments" track-by="id">
+                        <span class="am-badge am-badge-danger cursor-pointer" @click="removeComment(comment.id)">
+                            <i class="am-icon-remove am-icon-fw"></i>
+                        </span>
+                        
+                        <div class="am-text-truncate">{{comment.content}}</div>
+                        
+                        <small>{{comment.user}} 发表于 {{comment.time}}</small>
+                    </li>
+                </ul>
+                <pager :total="commentsTotal" :page.sync="commentsPage" @paginate.pager="onPaginate"></pager>
+            </div>
+        </am-panel>
+        <!--/ am-panel -->
+
+    </div>
+</div>
