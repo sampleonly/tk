@@ -1,0 +1,45 @@
+
+<div>
+    <am-panel title="创业基地信息列表">
+        <div slot="body">
+
+            <div class="am-margin-bottom">
+                <a v-link="{name: 'ckzj-ckb-create'}" class="am-btn am-btn-warning am-btn-xs">
+                    <i class="am-icon-plus"></i> 新增
+                </a>
+            </div>
+
+            <table class="am-table am-table-hover am-text-nowrap">
+                <thead>
+                    <tr>
+                        <th width="70px">#</th>
+                        <th>标题</th>
+                        <th width="200px">城市</th>
+                        <th width="200px">区域</th>
+                        <th width="220px">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in collection">
+                        <td>{{item.id}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.city}}</td>
+                        <td>{{item.district}}</td>
+                        <td>
+                            <div class="am-btn-group am-btn-group-xs">
+                                <a v-link="{name: 'ckzj-ckb-edit', params: {id: item.id}}" class="am-btn am-btn-default">
+                                    <span class="am-text-primary"><i class="am-icon-pencil"></i> 编辑</span>
+                                </a>
+                                <a @click.prevent="remove(item.id)" class="am-btn am-btn-default">
+                                    <span class="am-text-danger"><i class="am-icon-trash"></i> 删除</span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pager :page="$route.query.page" :total="total" :route="$route"></pager>
+        </div>
+    </am-panel>
+</div>

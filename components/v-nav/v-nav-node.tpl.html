@@ -4,7 +4,7 @@
      class="v-nav_node" 
     :class="[isRoot ? 'v-nav_node__root': '', active ? 'v-nav_node__active': '', isBranch ? 'v-nav_node__branch': '', level ? 'v-nav_node__lev' + level: '']">
 
-    <a v-if="name" class="v-nav_link" v-link="{path: link, activeClass:'v-nav-node-active'}" @click="select">
+    <a v-if="name" class="v-nav_link" v-link="{path: link, activeClass:'v-nav-node-active', exact: true}" @click="select">
         <i v-if="icon" :class="icon"></i> {{name}}
     </a>
     <ul class="v-nav_children" v-if="isBranch">

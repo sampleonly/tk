@@ -10,9 +10,10 @@
         <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right">
             <li class="am-dropdown">
                 <a class="am-dropdown-toggle" data-am-dropdown-toggle="" href="javascript:;">
-                    <span class="am-icon-users"></span> {{username}} ({{roleName}}) <span class="am-icon-caret-down"></span>
+                    <span class="am-icon-users"></span> {{username}} ({{currentRole && currentRole.roleName}}) <span class="am-icon-caret-down"></span>
                 </a>
                 <ul class="am-dropdown-content">
+                    <li><a v-link="{path: '/chooseRole'}"><span class="am-icon-exchange"></span> 切换角色</a></li>
                     <li><a href="javascript:void(0)"><span class="am-icon-key"></span> 修改密码</a></li>
                     <li><a href="#" @click.prevent="logout"><span class="am-icon-power-off"></span> 退出</a></li>
                 </ul>

@@ -1,0 +1,43 @@
+
+<div>
+    <am-panel title="信息列表">
+        <div slot="body">
+
+            <table class="am-table am-table-hover am-text-nowrap">
+                <thead>
+                    <tr>
+                        <th width="70px">#</th>
+                        <th>标题</th>
+                        <th>游览量</th>
+                        <th>发布时间</th>
+                        <th>供货方 / 求购方</th>
+                        <th>状态</th>
+                        <th width="220px">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in collection">
+                        <td>{{item.id}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.count}}</td>
+                        <td>{{item.time}}</td>
+                        <td>{{item.side | dict 'xept.sbtj.side'}}</td>
+                        <td>{{item.state | dict 'xept.state'}}</td>
+                        <td>
+                            <div class="am-btn-group am-btn-group-xs">
+                                <a v-link="{name: 'xept-sbtj-edit', params: {id: item.id}}" class="am-btn am-btn-default">
+                                    <span class="am-text-primary"><i class="am-icon-pencil"></i> 编辑</span>
+                                </a>
+                                <a @click.prevent="remove(item.id)" class="am-btn am-btn-default">
+                                    <span class="am-text-danger"><i class="am-icon-trash"></i> 删除</span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pager :page="$route.query.page" :total="total" :route="$route"></pager>
+        </div>
+    </am-panel>
+</div>

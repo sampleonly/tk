@@ -4,7 +4,7 @@
         <div class="am-u-md-6 am-u-md-offset-3 am-margin-top-lg">
             <select class="am-form-lg" placeholder="请选择一个角色登录">
                 <option value=""></option>
-                <option v-for="role in $root.user.roles" value="{{role.id}}">{{role.roleName}}</option>
+                <option v-for="role in roles" value="{{role.id}}">{{role.roleName}}</option>
             </select>
         </div>
     </div>

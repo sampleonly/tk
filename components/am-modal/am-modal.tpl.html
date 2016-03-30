@@ -1,0 +1,10 @@
+<div>
+    <div class="am-modal" v-bind:class="{'am-modal-active': show, 'am-modal-lg': lg}" v-show="show">
+        <div class="am-modal-dialog">
+            <slot name="header"></slot>
+            <slot></slot>
+            <slot name="footer"></slot>
+        </div>
+    </div>
+    <!-- <div class="am-dimmer" v-bind:class="{'am-active': show}" v-show="show" v-on:click="close" transition="modal-fade"></div> -->
+</div>

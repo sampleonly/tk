@@ -1,0 +1,129 @@
+
+<div>
+    <!-- am-panel -->
+    <am-panel title="基本信息">
+        <div slot="body">
+            <!-- form wrapper -->
+            <div class="am-g">
+                <div class="am-u-md-9 am-u-md-centered">
+                    <!-- form -->
+                    <form class="am-form am-form-horizontal">
+                        <!-- <fieldset><legend>fieldset title</legend></fieldset> -->
+                        <div class="am-form-group" v-if="model.id">
+                            <label class="am-form-label am-u-md-2">ID</label>
+                            <div class="am-u-md-10">
+                                <input v-model="model.id" type="text" readonly>    
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">标题</label>
+                            <div class="am-u-md-10">
+                                <input v-model="model.title" type="text" placeholder="输入标题">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">简介</label>
+                            <div class="am-u-md-10">
+                                <textarea v-model="model.introduction" rows="3" placeholder="输入简介"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">详情介绍</label>
+                            <div class="am-u-md-10">
+                                <textarea v-model="model.detail" rows="3" placeholder="输入详情介绍"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">城市</label>
+                            <div class="am-u-md-10">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">区域</label>
+                            <div class="am-u-md-10">
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">所在地址</label>
+                            <div class="am-u-md-10">
+                                <input v-model="model.location" type="text" placeholder="输入所在地址">
+                            </div>
+                        </div>
+
+                    </form>
+                    <!--/ form -->
+                </div>
+            </div>
+            <!--/ form wrapper -->
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+
+    <!-- am-panel -->
+    <am-panel title="简介图片">
+        <div slot="body">
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+
+    <!-- am-panel -->
+    <am-panel title="幻灯片图片">
+        <div slot="body">
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+
+    <!-- am-panel -->
+    <am-panel title="产品图片">
+        <div slot="body">
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+
+    <!-- am-panel -->
+    <am-panel title="会议室图片">
+        <div slot="body">
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+
+    <!-- am-panel -->
+    <am-panel title="休息区图片">
+        <div slot="body">
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+
+    <!-- am-panel -->
+    <am-panel title="免费咖啡图片">
+        <div slot="body">
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+
+    <!-- am-panel -->
+    <am-panel title="打印区图片">
+        <div slot="body">
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+
+    <!-- am-panel -->
+    <am-panel title="免费Wifi图片">
+        <div slot="body">
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+
+    <am-panel>
+        <div slot="body">
+            <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-save"></i> 保存</button>
+        </div>
+    </am-panel>
+</div>

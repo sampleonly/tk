@@ -1,0 +1,152 @@
+<div>
+    <!-- am-panel -->
+    <am-panel title="编辑">
+        <div slot="body">
+            <!-- form wrapper -->
+            <div class="am-g">
+                <div class="am-u-md-9 am-u-md-centered">
+                    <!-- form -->
+                    <form class="am-form am-form-horizontal">
+                        <!-- <fieldset><legend>fieldset title</legend></fieldset> -->
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">ID</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.id}}" disabled>
+                            </div>
+                        </div>                        
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">照片</label>
+                            <div class="am-u-md-10">
+                                <!-- <input type="text" value="{{model.picUrl}}" disabled> -->
+                                <img :src="model.picUrl" width="120" height="140">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">求职意向</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.title}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">昵称</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.userName}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">姓名</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.name}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">性别</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.gender| dict 'gender'}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">年龄</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.age}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">身高</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.height}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">手机号码</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.mobile}}" disabled>
+                            </div>
+                        </div>
+                        <!-- <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">区域</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.district| dict 'district'}}" disabled>
+                            </div>
+                        </div> -->
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">学校/单位</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.department}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">求职宣言</label>
+                            <div class="am-u-md-10">
+                                <textarea rows="3" disabled>{{model.declaration}}</textarea>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">空闲时间表</label>
+                            <div class="am-u-md-10">
+                                <div class="am-badge am-margin-right" :class="{'am-badge-primary': item.free}" v-for="item in schedule">{{item.day}}</div>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">工作经历</label>
+                            <div class="am-u-md-10">
+                                <textarea rows="3" disabled>{{model.experience}}</textarea>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">个人标签</label>
+                            <div class="am-u-md-10">
+                                <span class="am-badge am-badge-warning am-radius am-margin-right-xs" v-for="item in model.selfTags">
+                                    {{item.tag}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">技能标签</label>
+                            <div class="am-u-md-10">
+                                <span class="am-badge am-badge-warning am-radius am-margin-right-xs" v-for="item in model.skillTags  ">
+                                    {{item.tag}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">发布时间</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.time}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">浏览量</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.count}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">发布者</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.user}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">状态</label>
+                            <div class="am-u-md-10">
+                                <select v-model="model.state">
+                                    <option v-for="item in $root.dict['xept.state']" value="{{$key}}">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <div class="am-u-md-10 am-u-md-offset-2">
+                                <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-save"></i> 保存</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--/ form -->
+                </div>
+            </div>
+            <!--/ form wrapper -->
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+</div>

@@ -1,0 +1,115 @@
+
+<div>
+    <!-- am-panel -->
+    <am-panel title="编辑">
+        <div slot="body">
+            <!-- form wrapper -->
+            <div class="am-g">
+                <div class="am-u-md-9 am-u-md-centered">
+                    <!-- form -->
+                    <form class="am-form am-form-horizontal">
+                        <!-- <fieldset><legend>fieldset title</legend></fieldset> -->
+                        <div class="am-form-group" v-if="model.id">
+                            <label class="am-form-label am-u-md-2">ID</label>
+                            <div class="am-u-md-10">
+                                <input v-model="model.id" type="text" readonly>    
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">标题</label>
+                            <div class="am-u-md-10">
+                                <input v-model="model.title" type="text" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">公司名称</label>
+                            <div class="am-u-md-10">
+                                <input v-model="model.company" type="text" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">手机号码</label>
+                            <div class="am-u-md-10">
+                                <input v-model="model.mobile" type="text" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">联系人</label>
+                            <div class="am-u-md-10">
+                                <input v-model="model.name" type="text" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">备注描述</label>
+                            <div class="am-u-md-10">
+                            <textarea rows="3" disabled>{{model.memo}}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">承兑行全称</label>
+                            <div class="am-u-md-10">
+                                <input value="{{model.bank | dict 'bank'}}" type="text" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">票面金额</label>
+                            <div class="am-u-md-10">
+                                <input v-model="model.amount" type="text" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">到期日</label>
+                            <div class="am-u-md-10">
+                                <input v-model="model.repaymentDate" type="text" disabled>
+                            </div>
+                        </div>
+                        
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">发布时间</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.time}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">游览量</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.count}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">发布者</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.user}}" disabled>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">状态</label>
+                            <div class="am-u-md-10">
+                                <select v-model="model.state">
+                                    <option v-for="item in $root.dict['xept.state']" value="{{$key}}">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <div class="am-u-md-10 am-u-md-offset-2">
+                                <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-save"></i> 保存</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--/ form -->
+                </div>
+            </div>
+            <!--/ form wrapper -->
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+</div>

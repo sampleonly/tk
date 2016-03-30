@@ -1,0 +1,90 @@
+
+<div>
+    <!-- am-panel -->
+    <am-panel title="编辑">
+        <div slot="body">
+            <!-- form wrapper -->
+            <div class="am-g">
+                <div class="am-u-md-9 am-u-md-centered">
+                    <!-- form -->
+                    <form class="am-form am-form-horizontal">
+                        <!-- <fieldset><legend>fieldset title</legend></fieldset> -->
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">ID</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.id}}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">标题</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.title}}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">公司名称</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.company}}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">所属行业</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.industry | dict 'industry'}}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">联系人</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.name}}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">手机号码</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.mobile}}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">描述</label>
+                            <div class="am-u-md-10">
+                                <textarea rows="3" disabled>{{model.content}}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">发布方式</label>
+                            <div class="am-u-md-10">
+                                <input type="text" value="{{model.authority | dict 'authority'}}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">状态</label>
+                            <div class="am-u-md-10">
+                                <select v-model="model.state">
+                                    <option v-for="item in $root.dict['qyzl.state']" value="{{$key}}">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <div class="am-u-md-10 am-u-md-offset-2">
+                                <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-save"></i> 保存</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--/ form -->
+                </div>
+            </div>
+            <!--/ form wrapper -->
+        </div>
+    </am-panel>
+    <!--/ am-panel -->
+</div>

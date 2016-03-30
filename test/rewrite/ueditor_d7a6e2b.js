@@ -1,0 +1,1 @@
+"use strict";function uploadimg(o,t){var i=Math.floor(5*Math.random())+1;t.write(JSON.stringify({state:"SUCCESS",url:"/mock/imgs/"+i+".jpg",title:"demo.jpg",original:"demo.jpg"}))}module.exports=function(o,t,i){var a=(o.method,o.param("action"));switch(a){case"uploadimg":uploadimg(o,t,i)}t.end()};
