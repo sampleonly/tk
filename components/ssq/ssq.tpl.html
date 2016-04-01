@@ -1,0 +1,21 @@
+
+<div class="ssq">
+    <div class="ssq_item ssq_province">
+        <select v-model="provinceCode" :disabled="!provinces || provinces.length == 0" @change="onProvinceChange($event)">
+            <option value="">选择省份</option>
+            <option value="{{item.code}}" v-for="item in provinces">{{item.name}}</option>
+        </select>
+    </div>
+    <div class="ssq_item ssq_city">
+        <select v-model="cityCode" :disabled="!cities || cities.length == 0" @change="onCityChange($event)">
+            <option value="">选择城市</option>
+            <option value="{{item.code}}" v-for="item in cities">{{item.name}}</option>
+        </select>
+    </div>
+    <div class="ssq_item ssq_district">
+        <select v-model="districtCode" :disabled="!districts || districts.length == 0">
+            <option value="">选择区域</option>
+            <option value="{{item.code}}" v-for="item in districts">{{item.name}}</option>
+        </select>
+    </div>
+</div>

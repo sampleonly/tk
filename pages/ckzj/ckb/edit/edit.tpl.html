@@ -33,19 +33,14 @@
                         <div class="am-form-group">
                             <label class="am-form-label am-u-md-2">详情介绍</label>
                             <div class="am-u-md-10">
-                                <textarea v-model="model.detail" rows="3" placeholder="输入详情介绍"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">城市</label>
-                            <div class="am-u-md-10">
+                                <textarea v-model="model.detail" rows="4" placeholder="输入详情介绍"></textarea>
                             </div>
                         </div>
 
                         <div class="am-form-group">
                             <label class="am-form-label am-u-md-2">区域</label>
                             <div class="am-u-md-10">
+                                <ssq :district-code.sync="model.district"></ssq>
                             </div>
                         </div>
 
@@ -65,9 +60,26 @@
     </am-panel>
     <!--/ am-panel -->
 
+    <div style="display:none;"><veditor name="content" @veditor-ready="veditorReady = true" @images-selected="onImagesSelected"></veditor></div>
     <!-- am-panel -->
     <am-panel title="简介图片">
         <div slot="body">
+            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('introductimg')" :disabled="!veditorReady">上传图片</button>
+            <div class="am-g">
+                <div class="am-u-md-1 am-margin-top" 
+                    :class="{'am-u-end': $index == model.introductimg.length - 1}" 
+                    v-for="imgSrc in model.introductimg" track-by="$index">
+
+                    <div class="square-container">
+                        <div class="square-container_inner">
+                            <a href="#" @click.prevent="removeImage('introductimg', $index)" style="position:absolute;right:4px;">
+                                <i class="am-icon-trash am-text-warning"></i>
+                            </a>
+                            <img :src="imgSrc" class="square-container_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </am-panel>
     <!--/ am-panel -->
@@ -75,6 +87,22 @@
     <!-- am-panel -->
     <am-panel title="幻灯片图片">
         <div slot="body">
+            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('slideimg')" :disabled="!veditorReady">上传图片</button>
+            <div class="am-g">
+                <div class="am-u-md-1 am-margin-top" 
+                    :class="{'am-u-end': $index == model.slideimg.length - 1}" 
+                    v-for="imgSrc in model.slideimg" track-by="$index">
+
+                    <div class="square-container">
+                        <div class="square-container_inner">
+                            <a href="#" @click.prevent="removeImage('slideimg', $index)" style="position:absolute;right:4px;">
+                                <i class="am-icon-trash am-text-warning"></i>
+                            </a>
+                            <img :src="imgSrc" class="square-container_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </am-panel>
     <!--/ am-panel -->
@@ -82,6 +110,22 @@
     <!-- am-panel -->
     <am-panel title="产品图片">
         <div slot="body">
+            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('productionimg')" :disabled="!veditorReady">上传图片</button>
+            <div class="am-g">
+                <div class="am-u-md-1 am-margin-top" 
+                    :class="{'am-u-end': $index == model.productionimg.length - 1}" 
+                    v-for="imgSrc in model.productionimg" track-by="$index">
+
+                    <div class="square-container">
+                        <div class="square-container_inner">
+                            <a href="#" @click.prevent="removeImage('productionimg', $index)" style="position:absolute;right:4px;">
+                                <i class="am-icon-trash am-text-warning"></i>
+                            </a>
+                            <img :src="imgSrc" class="square-container_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </am-panel>
     <!--/ am-panel -->
@@ -89,6 +133,22 @@
     <!-- am-panel -->
     <am-panel title="会议室图片">
         <div slot="body">
+            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('boardroom')" :disabled="!veditorReady">上传图片</button>
+            <div class="am-g">
+                <div class="am-u-md-1 am-margin-top" 
+                    :class="{'am-u-end': $index == model.boardroom.length - 1}" 
+                    v-for="imgSrc in model.boardroom" track-by="$index">
+
+                    <div class="square-container">
+                        <div class="square-container_inner">
+                            <a href="#" @click.prevent="removeImage('boardroom', $index)" style="position:absolute;right:4px;">
+                                <i class="am-icon-trash am-text-warning"></i>
+                            </a>
+                            <img :src="imgSrc" class="square-container_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </am-panel>
     <!--/ am-panel -->
@@ -96,6 +156,22 @@
     <!-- am-panel -->
     <am-panel title="休息区图片">
         <div slot="body">
+            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('restingarea')" :disabled="!veditorReady">上传图片</button>
+            <div class="am-g">
+                <div class="am-u-md-1 am-margin-top" 
+                    :class="{'am-u-end': $index == model.restingarea.length - 1}" 
+                    v-for="imgSrc in model.restingarea" track-by="$index">
+
+                    <div class="square-container">
+                        <div class="square-container_inner">
+                            <a href="#" @click.prevent="removeImage('restingarea', $index)" style="position:absolute;right:4px;">
+                                <i class="am-icon-trash am-text-warning"></i>
+                            </a>
+                            <img :src="imgSrc" class="square-container_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </am-panel>
     <!--/ am-panel -->
@@ -103,6 +179,22 @@
     <!-- am-panel -->
     <am-panel title="免费咖啡图片">
         <div slot="body">
+            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('freecoffee')" :disabled="!veditorReady">上传图片</button>
+            <div class="am-g">
+                <div class="am-u-md-1 am-margin-top" 
+                    :class="{'am-u-end': $index == model.freecoffee.length - 1}" 
+                    v-for="imgSrc in model.freecoffee" track-by="$index">
+
+                    <div class="square-container">
+                        <div class="square-container_inner">
+                            <a href="#" @click.prevent="removeImage('freecoffee', $index)" style="position:absolute;right:4px;">
+                                <i class="am-icon-trash am-text-warning"></i>
+                            </a>
+                            <img :src="imgSrc" class="square-container_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </am-panel>
     <!--/ am-panel -->
@@ -110,6 +202,22 @@
     <!-- am-panel -->
     <am-panel title="打印区图片">
         <div slot="body">
+            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('printing')" :disabled="!veditorReady">上传图片</button>
+            <div class="am-g">
+                <div class="am-u-md-1 am-margin-top" 
+                    :class="{'am-u-end': $index == model.printing.length - 1}" 
+                    v-for="imgSrc in model.printing" track-by="$index">
+
+                    <div class="square-container">
+                        <div class="square-container_inner">
+                            <a href="#" @click.prevent="removeImage('printing', $index)" style="position:absolute;right:4px;">
+                                <i class="am-icon-trash am-text-warning"></i>
+                            </a>
+                            <img :src="imgSrc" class="square-container_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </am-panel>
     <!--/ am-panel -->
@@ -117,6 +225,22 @@
     <!-- am-panel -->
     <am-panel title="免费Wifi图片">
         <div slot="body">
+            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('wifi')" :disabled="!veditorReady">上传图片</button>
+            <div class="am-g">
+                <div class="am-u-md-1 am-margin-top" 
+                    :class="{'am-u-end': $index == model.wifi.length - 1}" 
+                    v-for="imgSrc in model.wifi" track-by="$index">
+
+                    <div class="square-container">
+                        <div class="square-container_inner">
+                            <a href="#" @click.prevent="removeImage('wifi', $index)" style="position:absolute;right:4px;">
+                                <i class="am-icon-trash am-text-warning"></i>
+                            </a>
+                            <img :src="imgSrc" class="square-container_img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </am-panel>
     <!--/ am-panel -->
