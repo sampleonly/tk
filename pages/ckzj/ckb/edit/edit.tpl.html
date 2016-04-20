@@ -38,6 +38,15 @@
                         </div>
 
                         <div class="am-form-group">
+                            <label class="am-form-label am-u-md-2">所属行业</label>
+                            <div class="am-u-md-10">
+                                <select v-model="model.industry">
+                                    <option value="{{$key}}" v-for="item in $root.dict.industry">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
                             <label class="am-form-label am-u-md-2">区域</label>
                             <div class="am-u-md-10">
                                 <ssq :district-code.sync="model.district"></ssq>
