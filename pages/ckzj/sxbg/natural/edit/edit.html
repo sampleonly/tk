@@ -1,97 +1,94 @@
 
 <div>
+    <!-- mainview -->
+    <mainview :title="isNew ? '新增': '编辑'">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>创客之家</breadcrumb-item>
+            <breadcrumb-item link="/ckzj/sxbg/natural">失信自然人</breadcrumb-item>
+            <breadcrumb-item>{{isNew ? '新增': '编辑'}}</breadcrumb-item>
+        </breadcrumb>
 
-    <!-- navbar -->
-    <header class="am-topbar">
-        <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li>
-                <a v-link="{path: '/ckzj/sxbg/natural'}">
-                    <i class="am-icon-list"></i> 失信列表
-                </a>
-            </li>
-        </ul>
-    </header>
-    <!-- navbar -->
-    <div class="am-g">
-        <!-- am-panel -->
-        <am-panel title="申请基本信息">
-            <div slot="body">
-                <form class="am-form">
-                    <div class="am-g am-margin-top" v-if="model.id">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>ID</b>
+        <!-- mainview-body -->
+        <template>
+            <am-panel title="失信自然人信息">
+                <div class="am-u-md-9 am-u-md-centered">
+                    <form class="am-form am-form-horizontal">
+                        <div class="am-form-group" v-if="model.id">
+                            <div class="am-u-md-2">
+                                <label class="am-form-label">ID</label>
+                            </div>
+                            <div class="am-u-md-4 am-u-end">
+                                <input type="text" v-model="model.id" readonly>
+                            </div>
                         </div>
-                        <div class="am-u-md-4 am-u-end">
-                            <input type="text" v-model="model.id" class="am-input-sm" readonly>
+                        <div class="am-form-group">
+                            <div class="am-u-md-2">
+                                <label class="am-form-label">姓名</label>
+                            </div>
+                            <div class="am-u-md-4 am-u-end">
+                                <input type="text" v-model="model.name" placeholder="姓名">
+                            </div>
                         </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>姓名</b>
+                        <div class="am-form-group">
+                            <div class="am-u-md-2">
+                                <label class="am-form-label">性别</label>
+                            </div>
+                            <div class="am-u-md-4 am-u-end">
+                                <select v-model="model.gender">
+                                    <option v-for="item in $root.dict.gender" value="{{$key}}">{{item}}</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="am-u-md-4 am-u-end">
-                            <input type="text" v-model="model.name" class="am-input-sm" placeholder="姓名">
+                        <div class="am-form-group">
+                            <div class="am-u-md-2">
+                                <label class="am-form-label">年龄</label>
+                            </div>
+                            <div class="am-u-md-4 am-u-end">
+                                <input type="text" v-model="model.age" placeholder="年龄">
+                            </div>
                         </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>性别</b>
+                        <div class="am-form-group">
+                            <div class="am-u-md-2">
+                                <label class="am-form-label">身份证号码</label>
+                            </div>
+                            <div class="am-u-md-4 am-u-end">
+                                <input type="text" v-model="model.idCardNumber" placeholder="身份证号码">
+                            </div>
                         </div>
-                        <div class="am-u-md-4 am-u-end">
-                            <select v-model="model.gender">
-                                <option v-for="item in $root.dict.gender" value="{{$key}}">{{item}}</option>
-                            </select>
+                        <div class="am-form-group">
+                            <div class="am-u-md-2">
+                                <label class="am-form-label">单位</label>
+                            </div>
+                            <div class="am-u-md-4 am-u-end">
+                                <input type="text" v-model="model.department" placeholder="单位">
+                            </div>
                         </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>年龄</b>
+                        <div class="am-form-group">
+                            <div class="am-u-md-2">
+                                <label class="am-form-label">欠款金额</label>
+                            </div>
+                            <div class="am-u-md-4 am-u-end">
+                                <input type="text" v-model="model.amount" placeholder="欠款金额">
+                            </div>
                         </div>
-                        <div class="am-u-md-4 am-u-end">
-                            <input type="text" v-model="model.age" class="am-input-sm" placeholder="年龄">
+                        <div class="am-form-group">
+                            <div class="am-u-md-2">
+                                <label class="am-form-label">发布方</label>
+                            </div>
+                            <div class="am-u-md-4 am-u-end">
+                                <input type="text" v-model="model.publisher" placeholder="发布方">
+                            </div>
                         </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>身份证号码</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            <input type="text" v-model="model.idCardNumber" class="am-input-sm" placeholder="身份证号码">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>单位</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            <input type="text" v-model="model.department" class="am-input-sm" placeholder="单位">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>欠款金额</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            <input type="text" v-model="model.amount" class="am-input-sm" placeholder="欠款金额">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>发布方</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            <input type="text" v-model="model.publisher" class="am-input-sm" placeholder="发布方">
-                        </div>
-                    </div>
 
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-offset-2 am-u-md-8 am-u-end">
-                            <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-save"></i> 保存</button>
+                        <div class="am-form-group">
+                            <div class="am-u-md-10 am-u-md-offset-2">
+                                <form-submit @submit="submit"></form-submit>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </am-panel>
-        <!-- am-panel -->
-    </div>
+                    </form>
+                </div>
+            </am-panel>
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

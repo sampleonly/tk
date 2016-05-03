@@ -1,11 +1,13 @@
 
 <section class="am-panel" :class="[theme ? 'am-panel-' + theme : 'am-panel-default']">
-    <header class="am-panel-hd" v-if="title">
+    <header class="am-panel-hd" v-show="showHead">
         <h3 class="am-panel-title">
             {{title}}
         </h3>
+        <!-- slot -->
+        <slot name="head"></slot>
     </header>
     <div class="am-panel-bd">
-        <slot name="body"></slot>
+        <slot></slot>
     </div>
 </section>

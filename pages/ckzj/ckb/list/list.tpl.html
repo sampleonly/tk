@@ -1,15 +1,21 @@
 
 <div>
-    <am-panel title="创业基地信息列表">
-        <div slot="body">
+    <!-- mainview -->
+    <mainview title="创客邦">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>创客之家</breadcrumb-item>
+            <breadcrumb-item>创客邦</breadcrumb-item>
+        </breadcrumb>
 
-            <div class="am-margin-bottom">
-                <a v-link="{name: 'ckzj-ckb-create'}" class="am-btn am-btn-warning am-btn-xs">
-                    <i class="am-icon-plus"></i> 新增
-                </a>
-            </div>
+        <!-- mainview-body -->
+        <template>
+            <a v-link="{name: 'ckzj-ckb-create'}" class="am-btn am-btn-default am-btn-sm am-margin-bottom">
+                <i class="am-icon-plus"></i> 新增
+            </a>
 
-            <table class="am-table am-table-hover am-text-nowrap">
+            <!-- data list -->
+            <table class="am-table am-table-hover am-table-well am-text-nowrap">
                 <thead>
                     <tr>
                         <th width="70px">#</th>
@@ -40,6 +46,8 @@
             </table>
 
             <pager :page="$route.query.page" :total="total" :route="$route"></pager>
-        </div>
-    </am-panel>
+            <!--/ data list -->
+            
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

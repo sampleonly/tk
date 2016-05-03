@@ -1,8 +1,17 @@
 
 <div class="mainview">
+    <!-- mainview-header -->
     <div class="mainview_header">
-        <slot name="header"></slot>
-    </div>
+        <div class="am-g am-g-collapse">
+            <div class="am-u-sm-6">
+                <h1>{{title}}</h1>
+            </div>
+            <div class="am-u-sm-6 am-text-right">
+                <slot name="breadcrumb"></slot>
+            </div>
+        </div>
+    </div><!--/ mainview-header -->
+
     <div class="mainview_body">
         <slot></slot>
     </div>

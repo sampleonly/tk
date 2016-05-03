@@ -1,0 +1,1 @@
+define("components/form/FormField",function(r,l,n){"use strict";n.exports={template:'\r\n\r\n<div class="am-form-group">\r\n    <label class="am-form-label">\r\n        <slot name="label"></slot>\r\n    </label>\r\n    \r\n    <slot></slot>\r\n    \r\n</div>\r\n'}});

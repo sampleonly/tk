@@ -1,17 +1,21 @@
 
 <div>
-    <am-panel title="用户列表">
-        <div slot="body">
-            <div class="am-btn-toolbar">
-                <!-- 按钮组 -->
-                <div class="am-btn-group am-margin-bottom">
-                    <a v-link="{path: '/security/user/edit'}" class="am-btn am-btn-primary am-btn-sm">
-                        <i class="am-icon-plus"></i> 创建用户
-                    </a>
-                </div>
-            </div>
+    <!-- mainview -->
+    <mainview title="用户管理">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>系统安全</breadcrumb-item>
+            <breadcrumb-item>用户管理</breadcrumb-item>
+        </breadcrumb>
 
-            <table class="am-table am-table-bordered">
+        <!-- mainview-body -->
+        <template>
+            <a v-link="{path: '/security/user/edit'}" class="am-btn am-btn-default am-btn-sm am-margin-bottom">
+                <i class="am-icon-plus"></i> 新增
+            </a>
+
+            <!-- data list -->
+            <table class="am-table am-table-hover am-table-well am-text-nowrap">
                 <thead>
                     <tr>
                         <th>用户名</th>
@@ -65,6 +69,8 @@
             </table>
 
             <pager :page="$route.query.page" :total="totalCount" :route="$route"></pager>
-        </div>
-    </am-panel>
+            <!--/ data list -->
+            
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

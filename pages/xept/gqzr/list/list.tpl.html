@@ -1,9 +1,16 @@
-
 <div>
-    <am-panel title="信息列表">
-        <div slot="body">
+    <!-- mainview -->
+    <mainview title="股权转让">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>小二跑腿</breadcrumb-item>
+            <breadcrumb-item>股权转让</breadcrumb-item>
+        </breadcrumb>
 
-            <table class="am-table am-table-hover am-text-nowrap">
+        <!-- mainview-body -->
+        <template>
+            <!-- data list -->
+            <table class="am-table am-table-hover am-table-well am-text-nowrap">
                 <thead>
                     <tr>
                         <th width="70px">#</th>
@@ -40,6 +47,7 @@
             </table>
 
             <pager :page="$route.query.page" :total="total" :route="$route"></pager>
-        </div>
-    </am-panel>
+            <!--/ data list -->
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

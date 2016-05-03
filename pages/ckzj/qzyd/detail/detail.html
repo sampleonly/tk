@@ -1,103 +1,101 @@
 
 <div>
+    <!-- mainview -->
+    <mainview title="贴子详情">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>创客之家</breadcrumb-item>
+            <breadcrumb-item link="/ckzj/qzyd">圈子运动</breadcrumb-item>
+            <breadcrumb-item>贴子详情</breadcrumb-item>
+        </breadcrumb>
 
-    <!-- navbar -->
-    <header class="am-topbar">
-        <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li>
-                <a v-link="{path: '/ckzj/qzyd'}">
-                    <i class="am-icon-list"></i> 帖子列表
-                </a>
-            </li>
-        </ul>
-    </header>
-    <!-- navbar -->
-    <div class="am-g">
-        <!-- am-panel -->
-        <am-panel title="贴子信息">
-            <div slot="body">
-                <form class="am-form">
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>ID</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            {{model.id}}
-                        </div>
+        <!-- mainview-body -->
+        <template>
+            <!-- am-panel -->
+            <am-panel title="基本信息">
+                <!-- form wrapper -->
+                <div class="am-g">
+                    <div class="am-u-md-9 am-u-md-centered">
+                        <!-- form -->
+                        <form class="am-form am-form-horizontal">
+
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    标题：
+                                </div>
+                                <div class="am-u-md-10 am-u-end">
+                                    {{model.title}}
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    标签：
+                                </div>
+                                <div class="am-u-md-10 am-u-end">
+                                    <span class="am-badge am-badge-warning am-radius am-margin-right-xs" v-for="item in model.tags">
+                                        {{item.tag}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    浏览量：
+                                </div>
+                                <div class="am-u-md-10 am-u-end">
+                                    {{model.count}}
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    评论数：
+                                </div>
+                                <div class="am-u-md-10 am-u-end">
+                                    {{model.comment}}
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    发布时间：
+                                </div>
+                                <div class="am-u-md-10 am-u-end">
+                                    {{model.pubTime}}
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    更新时间：
+                                </div>
+                                <div class="am-u-md-10 am-u-end">
+                                    {{model.updateTime}}
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    发布者：
+                                </div>
+                                <div class="am-u-md-10 am-u-end">
+                                    {{model.user}}
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    内容：
+                                </div>
+                                <div class="am-u-md-10 am-u-end">
+                                    {{model.content}}
+                                </div>
+                            </div>
+
+                        </form>
+                        <!--/ form -->
                     </div>
-                    <div class="am-g am-margin-top" v-if="model.id">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>标题</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            {{model.title}}
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top" v-if="model.id">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>标签</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            <span class="am-badge am-badge-warning am-radius am-margin-right-xs" v-for="item in model.tags">
-                                {{item.tag}}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top" v-if="model.id">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>浏览量</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            {{model.count}}
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top" v-if="model.id">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>评论数</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            {{model.comment}}
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top" v-if="model.id">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>发布时间</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            {{model.pubTime}}
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top" v-if="model.id">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>更新时间</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            {{model.updateTime}}
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top" v-if="model.id">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>发布者</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            {{model.user}}
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top" v-if="model.id">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>内容</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            {{model.content}}
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </am-panel>
-        <!-- am-panel -->
-        <!-- am-panel -->
-        <am-panel title="评论列表">
-            <div slot="body">
+                </div>
+                <!--/ form wrapper -->
+            </am-panel>
+            <!--/ am-panel -->
+
+            <!-- am-panel -->
+            <am-panel title="评论列表">
                 <!-- comments list -->
                 <ul class="am-comments-list">
                     <li class="am-comment" v-for="comment in comments">
@@ -117,8 +115,8 @@
                 <!-- comments list -->
 
                 <pager :total="model.comment" @paginate.pager="onPaginate"></pager>
-            </div>
-        </am-panel>
-        <!-- am-panel -->
-    </div>
+            </am-panel>
+            <!-- am-panel -->
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

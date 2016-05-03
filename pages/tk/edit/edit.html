@@ -1,43 +1,44 @@
+
 <div>
-    <!-- navbar -->
-    <header class="am-topbar">
-        <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li>
-                <a v-link="{path: '/tk'}">
-                    <i class="am-icon-plus"></i> 新闻列表
-                </a>
-            </li>
-        </ul>
-    </header>
-    <!-- navbar -->
+    <!-- mainview -->
+    <mainview :title="isNew ? '新建': '编辑'">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item link="/tk">关于天开</breadcrumb-item>
+            <breadcrumb-item>{{isNew ? '新建': '编辑'}}</breadcrumb-item>
+        </breadcrumb>
 
-    <am-panel title="新闻编辑">
-        <div slot="body">
-            <form class="am-form">
-                <input type="hidden" name="id" v-model="model.id">
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        标题
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        <input type="text" name="title" v-model="model.title" class="am-input-sm" placeholder="标题">
+        <!-- mainview-body -->
+        <template>
+            <am-panel title="新闻信息">
+                <div class="am-g">
+                    <div class="am-u-md-10 am-u-md-offset-1">
+                        <form class="am-form am-form-horizontal">
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">标题</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" name="title" v-model="model.title" class="am-input-sm" placeholder="标题">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">内容</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                <veditor name="content" :content.sync="model.content"></veditor>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-10 am-u-md-offset-2">
+                                    <form-submit @submit="submit"></form-submit>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="am-g am-margin-top-sm">
-                    <div class="am-u-md-2 am-text-right admin-form-text">
-                        内容
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                    <veditor name="content" :content.sync="model.content"></veditor>
-                    </div>
-                </div>
-            </form>
-
-            <div class="am-g am-margin-top">
-                <div class="am-u-md-6 am-u-md-offset-2">
-                    <button @click.prevent="submit" class="am-btn am-btn-primary am-btn">保存</button>
-                </div>
-            </div>
-        </div>
-    </am-panel>
+            </am-panel>
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

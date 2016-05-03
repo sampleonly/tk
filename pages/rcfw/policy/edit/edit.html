@@ -1,50 +1,63 @@
 
 <div>
-    <am-panel title="政策信息编辑">
-        <div slot="body">
-            <form class="am-form">
-                <input type="hidden" name="id" value="{{id}}">
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        标题
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        <input type="text" name="title" v-model="formData.title" class="am-input-sm" placeholder="标题">
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        摘要
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        <textarea name="shortContent" rows="5" v-model="formData.shortContent" placeholder="摘要" class="am-input-sm"></textarea>
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        原文链接
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        <input type="text" name="link" v-model="formData.link" class="am-input-sm" placeholder="原文链接">
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        类型
-                    </div>
-                    <div class="am-u-md-2 am-u-end">
-                        <select name="type" v-model="formData.type" class="am-input-sm">
-                            <option value="{{$key}}" v-for="type in types">{{type}}</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
+    <!-- mainview -->
+    <mainview :title="isNew ? '新建': '编辑'">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>人才服务</breadcrumb-item>
+            <breadcrumb-item link="/rcfw/policy">政策</breadcrumb-item>
+            <breadcrumb-item>{{isNew ? '新建': '编辑'}}</breadcrumb-item>
+        </breadcrumb>
 
-            <div class="am-g am-margin-top">
-                <div class="am-u-md-6 am-u-md-offset-2">
-                    <button @click.prevent="submit" class="am-btn am-btn-primary am-btn">保存</button>
+        <!-- mainview-body -->
+        <template>
+            <am-panel title="政策信息">
+                <div class="am-g">
+                    <div class="am-u-md-10 am-u-md-offset-1">
+                        <form class="am-form am-form-horizontal">
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">标题</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" name="title" v-model="model.title" class="am-input-sm" placeholder="标题">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">摘要</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <textarea name="shortContent" rows="5" v-model="model.shortContent" placeholder="摘要" class="am-input-sm"></textarea>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">原文链接</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" name="link" v-model="model.link" class="am-input-sm" placeholder="原文链接">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">类型</label>
+                                </div>
+                                <div class="am-u-md-3 am-u-end">
+                                    <select name="type" v-model="model.type" class="am-input-sm">
+                                        <option value="{{$key}}" v-for="type in types">{{type}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-10 am-u-md-offset-2">
+                                    <form-submit @submit="submit"></form-submit>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </am-panel>
+            </am-panel>
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

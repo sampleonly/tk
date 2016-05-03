@@ -1,25 +1,22 @@
 
 <div>
+    <!-- mainview -->
+    <mainview title="编辑">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>融资保险</breadcrumb-item>
+            <breadcrumb-item link="/rzbx/rzsq">融资申请</breadcrumb-item>
+            <breadcrumb-item>编辑</breadcrumb-item>
+        </breadcrumb>
 
-    <!-- navbar -->
-    <header class="am-topbar">
-        <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li>
-                <a v-link="{path: '/rzbx/rzsq'}">
-                    <i class="am-icon-list"></i> 申请列表
-                </a>
-            </li>
-        </ul>
-    </header>
-    <!-- navbar -->
-    <div class="am-g">
-        <!-- am-panel -->
-        <am-panel title="申请基本信息">
-            <div slot="body">
+        <!-- mainview-body -->
+        <template>
+            <!-- am-panel -->
+            <am-panel title="申请基本信息">
                 <form class="am-form">
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>ID</b>
+                            <label class="am-form-label">ID</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.id}}
@@ -27,7 +24,7 @@
                     </div>
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>企业名称</b>
+                            <label class="am-form-label">企业名称</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.company}}
@@ -35,7 +32,7 @@
                     </div>
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>手机号码</b>
+                            <label class="am-form-label">手机号码</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.mobile}}
@@ -43,7 +40,7 @@
                     </div>
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>电子邮箱</b>
+                            <label class="am-form-label">电子邮箱</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.email}}
@@ -51,7 +48,7 @@
                     </div>
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>联系人</b>
+                            <label class="am-form-label">联系人</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.name}}
@@ -60,7 +57,7 @@
                     <!-- 
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>所属行业</b>
+                            <label class="am-form-label">所属行业</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.industry}}
@@ -69,7 +66,7 @@
                      -->
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>融资金额</b>
+                            <label class="am-form-label">融资金额</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.amount}}
@@ -77,7 +74,7 @@
                     </div>
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>融资意向</b>
+                            <label class="am-form-label">融资意向</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.mode | dict 'rzbx.rzyx'}}
@@ -85,7 +82,7 @@
                     </div>
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>期限</b>
+                            <label class="am-form-label">期限</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.days}}
@@ -93,7 +90,7 @@
                     </div>
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>资产</b>
+                            <label class="am-form-label">资产</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.asset}}
@@ -101,7 +98,7 @@
                     </div>
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>销售收入</b>
+                            <label class="am-form-label">销售收入</label>
                         </div>
                         <div class="am-u-md-4 am-u-end">
                             {{model.sales}}
@@ -109,7 +106,7 @@
                     </div>
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>状态</b>
+                            <label class="am-form-label">状态</label>
                         </div>
                         <div class="am-u-md-6 am-u-end">
                             <select v-model="model.state" class="am-input-sm">
@@ -119,7 +116,7 @@
                     </div>
                     <div class="am-g am-margin-top">
                         <div class="am-u-md-2 am-text-right">
-                            <b>备注</b>
+                            <label class="am-form-label">备注</label>
                         </div>
                         <div class="am-u-md-6 am-u-end">
                             <textarea rows="3" v-model="model.memo"></textarea>
@@ -127,13 +124,13 @@
                     </div>
 
                     <div class="am-g am-margin-top">
-                        <div class="am-u-md-offset-2 am-u-md-8 am-u-end">
-                            <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-save"></i> 保存</button>
+                        <div class="am-u-md-10 am-u-md-offset-2">
+                            <form-submit @submit="submit"></form-submit>
                         </div>
                     </div>
                 </form>
-            </div>
-        </am-panel>
-        <!-- am-panel -->
-    </div>
+            </am-panel>
+            <!-- am-panel -->
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

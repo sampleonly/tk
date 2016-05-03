@@ -1,22 +1,20 @@
 
 <div>
+    <!-- mainview -->
+    <mainview title="失信自然人">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>创客之家</breadcrumb-item>
+            <breadcrumb-item>失信自然人</breadcrumb-item>
+        </breadcrumb>
 
-    <!-- navbar -->
-    <header class="am-topbar">
-        <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li>
-                <a v-link="{path: '/ckzj/sxbg/natural/edit'}">
-                    <i class="am-icon-plus"></i> 新增
-                </a>
-            </li>
-        </ul>
-    </header>
-    <!-- navbar -->
+        <!-- mainview-body -->
+        <template>
+            <a v-link="{path: '/ckzj/sxbg/natural/edit'}" class="am-btn am-btn-default am-btn-sm am-margin-bottom">
+                <i class="am-icon-plus"></i> 新增
+            </a>
 
-    <am-panel title="失信列表">
-        <div slot="body">
-
-            <table class="am-table">
+            <table class="am-table am-table-hover am-table-well am-text-nowrap">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -52,6 +50,6 @@
             </table>
 
             <pager :page="$route.query.page" :total="totalCount" :route="$route"></pager>
-        </div>
-    </am-panel>
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

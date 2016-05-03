@@ -1,262 +1,258 @@
 
 <div>
-    <!-- am-panel -->
-    <am-panel title="基本信息">
-        <div slot="body">
-            <!-- form wrapper -->
-            <div class="am-g">
-                <div class="am-u-md-9 am-u-md-centered">
-                    <!-- form -->
-                    <form class="am-form am-form-horizontal">
-                        <!-- <fieldset><legend>fieldset title</legend></fieldset> -->
-                        <div class="am-form-group" v-if="model.id">
-                            <label class="am-form-label am-u-md-2">ID</label>
-                            <div class="am-u-md-10">
-                                <input v-model="model.id" type="text" readonly>    
+    <!-- mainview -->
+    <mainview :title="pageTitle">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>创客之家</breadcrumb-item>
+            <breadcrumb-item link="/ckzj/ckb">创客邦</breadcrumb-item>
+            <breadcrumb-item>{{pageTitle}}</breadcrumb-item>
+        </breadcrumb>
+
+        <!-- mainview-body -->
+        <template>
+            <!-- am-panel -->
+            <am-panel title="基本信息">
+                <!-- form wrapper -->
+                <div class="am-g">
+                    <div class="am-u-md-9 am-u-md-centered">
+                        <!-- form -->
+                        <form class="am-form am-form-horizontal">
+
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">标题</label>    
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.title" type="text" placeholder="输入标题">
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">简介</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <textarea v-model="model.introduction" rows="3" placeholder="输入简介"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">详情介绍</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <textarea v-model="model.detail" rows="4" placeholder="输入详情介绍"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">所属行业</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <select v-model="model.industry">
+                                        <option value="{{$key}}" v-for="item in $root.dict.industry">{{item}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">区域</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <ssq :district-code.sync="model.district"></ssq>
+                                </div>
+                            </div>
+
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">所在地址</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.location" type="text" placeholder="输入所在地址">
+                                </div>
+                            </div>
+
+                        </form>
+                        <!--/ form -->
+                    </div>
+                </div>
+                <!--/ form wrapper -->
+            </am-panel>
+            <!--/ am-panel -->
+
+            <div style="display:none;"><veditor name="content" @veditor-ready="veditorReady = true" @images-selected="onImagesSelected"></veditor></div>
+            <!-- am-panel -->
+            <am-panel title="简介图片">
+                <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('introductimg')" :disabled="!veditorReady">上传图片</button>
+                <div class="am-g">
+                    <div class="am-u-md-1 am-margin-top" 
+                        :class="{'am-u-end': $index == model.introductimg.length - 1}" 
+                        v-for="imgSrc in model.introductimg" track-by="$index">
+
+                        <div class="square-container">
+                            <div class="square-container_inner">
+                                <a href="#" @click.prevent="removeImage('introductimg', $index)" style="position:absolute;right:4px;">
+                                    <i class="am-icon-trash am-text-warning"></i>
+                                </a>
+                                <img :src="imgSrc" class="square-container_img">
                             </div>
                         </div>
+                    </div>
+                </div>
+            </am-panel>
+            <!--/ am-panel -->
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">标题</label>
-                            <div class="am-u-md-10">
-                                <input v-model="model.title" type="text" placeholder="输入标题">
+            <!-- am-panel -->
+            <am-panel title="幻灯片图片">
+                <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('slideimg')" :disabled="!veditorReady">上传图片</button>
+                <div class="am-g">
+                    <div class="am-u-md-1 am-margin-top" 
+                        :class="{'am-u-end': $index == model.slideimg.length - 1}" 
+                        v-for="imgSrc in model.slideimg" track-by="$index">
+
+                        <div class="square-container">
+                            <div class="square-container_inner">
+                                <a href="#" @click.prevent="removeImage('slideimg', $index)" style="position:absolute;right:4px;">
+                                    <i class="am-icon-trash am-text-warning"></i>
+                                </a>
+                                <img :src="imgSrc" class="square-container_img">
                             </div>
                         </div>
+                    </div>
+                </div>
+            </am-panel>
+            <!--/ am-panel -->
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">简介</label>
-                            <div class="am-u-md-10">
-                                <textarea v-model="model.introduction" rows="3" placeholder="输入简介"></textarea>
+            <!-- am-panel -->
+            <am-panel title="产品图片">
+                <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('productionimg')" :disabled="!veditorReady">上传图片</button>
+                <div class="am-g">
+                    <div class="am-u-md-1 am-margin-top" 
+                        :class="{'am-u-end': $index == model.productionimg.length - 1}" 
+                        v-for="imgSrc in model.productionimg" track-by="$index">
+
+                        <div class="square-container">
+                            <div class="square-container_inner">
+                                <a href="#" @click.prevent="removeImage('productionimg', $index)" style="position:absolute;right:4px;">
+                                    <i class="am-icon-trash am-text-warning"></i>
+                                </a>
+                                <img :src="imgSrc" class="square-container_img">
                             </div>
                         </div>
+                    </div>
+                </div>
+            </am-panel>
+            <!--/ am-panel -->
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">详情介绍</label>
-                            <div class="am-u-md-10">
-                                <textarea v-model="model.detail" rows="4" placeholder="输入详情介绍"></textarea>
+            <!-- am-panel -->
+            <am-panel title="会议室图片">
+                <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('boardroom')" :disabled="!veditorReady">上传图片</button>
+                <div class="am-g">
+                    <div class="am-u-md-1 am-margin-top" 
+                        :class="{'am-u-end': $index == model.boardroom.length - 1}" 
+                        v-for="imgSrc in model.boardroom" track-by="$index">
+
+                        <div class="square-container">
+                            <div class="square-container_inner">
+                                <a href="#" @click.prevent="removeImage('boardroom', $index)" style="position:absolute;right:4px;">
+                                    <i class="am-icon-trash am-text-warning"></i>
+                                </a>
+                                <img :src="imgSrc" class="square-container_img">
                             </div>
                         </div>
+                    </div>
+                </div>
+            </am-panel>
+            <!--/ am-panel -->
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">所属行业</label>
-                            <div class="am-u-md-10">
-                                <select v-model="model.industry">
-                                    <option value="{{$key}}" v-for="item in $root.dict.industry">{{item}}</option>
-                                </select>
+            <!-- am-panel -->
+            <am-panel title="休息区图片">
+                <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('restingarea')" :disabled="!veditorReady">上传图片</button>
+                <div class="am-g">
+                    <div class="am-u-md-1 am-margin-top" 
+                        :class="{'am-u-end': $index == model.restingarea.length - 1}" 
+                        v-for="imgSrc in model.restingarea" track-by="$index">
+
+                        <div class="square-container">
+                            <div class="square-container_inner">
+                                <a href="#" @click.prevent="removeImage('restingarea', $index)" style="position:absolute;right:4px;">
+                                    <i class="am-icon-trash am-text-warning"></i>
+                                </a>
+                                <img :src="imgSrc" class="square-container_img">
                             </div>
                         </div>
+                    </div>
+                </div>
+            </am-panel>
+            <!--/ am-panel -->
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">区域</label>
-                            <div class="am-u-md-10">
-                                <ssq :district-code.sync="model.district"></ssq>
+            <!-- am-panel -->
+            <am-panel title="免费咖啡图片">
+                <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('freecoffee')" :disabled="!veditorReady">上传图片</button>
+                <div class="am-g">
+                    <div class="am-u-md-1 am-margin-top" 
+                        :class="{'am-u-end': $index == model.freecoffee.length - 1}" 
+                        v-for="imgSrc in model.freecoffee" track-by="$index">
+
+                        <div class="square-container">
+                            <div class="square-container_inner">
+                                <a href="#" @click.prevent="removeImage('freecoffee', $index)" style="position:absolute;right:4px;">
+                                    <i class="am-icon-trash am-text-warning"></i>
+                                </a>
+                                <img :src="imgSrc" class="square-container_img">
                             </div>
                         </div>
+                    </div>
+                </div>
+            </am-panel>
+            <!--/ am-panel -->
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">所在地址</label>
-                            <div class="am-u-md-10">
-                                <input v-model="model.location" type="text" placeholder="输入所在地址">
+            <!-- am-panel -->
+            <am-panel title="打印区图片">
+                <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('printing')" :disabled="!veditorReady">上传图片</button>
+                <div class="am-g">
+                    <div class="am-u-md-1 am-margin-top" 
+                        :class="{'am-u-end': $index == model.printing.length - 1}" 
+                        v-for="imgSrc in model.printing" track-by="$index">
+
+                        <div class="square-container">
+                            <div class="square-container_inner">
+                                <a href="#" @click.prevent="removeImage('printing', $index)" style="position:absolute;right:4px;">
+                                    <i class="am-icon-trash am-text-warning"></i>
+                                </a>
+                                <img :src="imgSrc" class="square-container_img">
                             </div>
                         </div>
-
-                    </form>
-                    <!--/ form -->
+                    </div>
                 </div>
-            </div>
-            <!--/ form wrapper -->
-        </div>
-    </am-panel>
-    <!--/ am-panel -->
+            </am-panel>
+            <!--/ am-panel -->
 
-    <div style="display:none;"><veditor name="content" @veditor-ready="veditorReady = true" @images-selected="onImagesSelected"></veditor></div>
-    <!-- am-panel -->
-    <am-panel title="简介图片">
-        <div slot="body">
-            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('introductimg')" :disabled="!veditorReady">上传图片</button>
-            <div class="am-g">
-                <div class="am-u-md-1 am-margin-top" 
-                    :class="{'am-u-end': $index == model.introductimg.length - 1}" 
-                    v-for="imgSrc in model.introductimg" track-by="$index">
+            <!-- am-panel -->
+            <am-panel title="免费Wifi图片">
+                <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('wifi')" :disabled="!veditorReady">上传图片</button>
+                <div class="am-g">
+                    <div class="am-u-md-1 am-margin-top" 
+                        :class="{'am-u-end': $index == model.wifi.length - 1}" 
+                        v-for="imgSrc in model.wifi" track-by="$index">
 
-                    <div class="square-container">
-                        <div class="square-container_inner">
-                            <a href="#" @click.prevent="removeImage('introductimg', $index)" style="position:absolute;right:4px;">
-                                <i class="am-icon-trash am-text-warning"></i>
-                            </a>
-                            <img :src="imgSrc" class="square-container_img">
+                        <div class="square-container">
+                            <div class="square-container_inner">
+                                <a href="#" @click.prevent="removeImage('wifi', $index)" style="position:absolute;right:4px;">
+                                    <i class="am-icon-trash am-text-warning"></i>
+                                </a>
+                                <img :src="imgSrc" class="square-container_img">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </am-panel>
-    <!--/ am-panel -->
+            </am-panel>
+            <!--/ am-panel -->
 
-    <!-- am-panel -->
-    <am-panel title="幻灯片图片">
-        <div slot="body">
-            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('slideimg')" :disabled="!veditorReady">上传图片</button>
-            <div class="am-g">
-                <div class="am-u-md-1 am-margin-top" 
-                    :class="{'am-u-end': $index == model.slideimg.length - 1}" 
-                    v-for="imgSrc in model.slideimg" track-by="$index">
-
-                    <div class="square-container">
-                        <div class="square-container_inner">
-                            <a href="#" @click.prevent="removeImage('slideimg', $index)" style="position:absolute;right:4px;">
-                                <i class="am-icon-trash am-text-warning"></i>
-                            </a>
-                            <img :src="imgSrc" class="square-container_img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </am-panel>
-    <!--/ am-panel -->
-
-    <!-- am-panel -->
-    <am-panel title="产品图片">
-        <div slot="body">
-            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('productionimg')" :disabled="!veditorReady">上传图片</button>
-            <div class="am-g">
-                <div class="am-u-md-1 am-margin-top" 
-                    :class="{'am-u-end': $index == model.productionimg.length - 1}" 
-                    v-for="imgSrc in model.productionimg" track-by="$index">
-
-                    <div class="square-container">
-                        <div class="square-container_inner">
-                            <a href="#" @click.prevent="removeImage('productionimg', $index)" style="position:absolute;right:4px;">
-                                <i class="am-icon-trash am-text-warning"></i>
-                            </a>
-                            <img :src="imgSrc" class="square-container_img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </am-panel>
-    <!--/ am-panel -->
-
-    <!-- am-panel -->
-    <am-panel title="会议室图片">
-        <div slot="body">
-            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('boardroom')" :disabled="!veditorReady">上传图片</button>
-            <div class="am-g">
-                <div class="am-u-md-1 am-margin-top" 
-                    :class="{'am-u-end': $index == model.boardroom.length - 1}" 
-                    v-for="imgSrc in model.boardroom" track-by="$index">
-
-                    <div class="square-container">
-                        <div class="square-container_inner">
-                            <a href="#" @click.prevent="removeImage('boardroom', $index)" style="position:absolute;right:4px;">
-                                <i class="am-icon-trash am-text-warning"></i>
-                            </a>
-                            <img :src="imgSrc" class="square-container_img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </am-panel>
-    <!--/ am-panel -->
-
-    <!-- am-panel -->
-    <am-panel title="休息区图片">
-        <div slot="body">
-            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('restingarea')" :disabled="!veditorReady">上传图片</button>
-            <div class="am-g">
-                <div class="am-u-md-1 am-margin-top" 
-                    :class="{'am-u-end': $index == model.restingarea.length - 1}" 
-                    v-for="imgSrc in model.restingarea" track-by="$index">
-
-                    <div class="square-container">
-                        <div class="square-container_inner">
-                            <a href="#" @click.prevent="removeImage('restingarea', $index)" style="position:absolute;right:4px;">
-                                <i class="am-icon-trash am-text-warning"></i>
-                            </a>
-                            <img :src="imgSrc" class="square-container_img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </am-panel>
-    <!--/ am-panel -->
-
-    <!-- am-panel -->
-    <am-panel title="免费咖啡图片">
-        <div slot="body">
-            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('freecoffee')" :disabled="!veditorReady">上传图片</button>
-            <div class="am-g">
-                <div class="am-u-md-1 am-margin-top" 
-                    :class="{'am-u-end': $index == model.freecoffee.length - 1}" 
-                    v-for="imgSrc in model.freecoffee" track-by="$index">
-
-                    <div class="square-container">
-                        <div class="square-container_inner">
-                            <a href="#" @click.prevent="removeImage('freecoffee', $index)" style="position:absolute;right:4px;">
-                                <i class="am-icon-trash am-text-warning"></i>
-                            </a>
-                            <img :src="imgSrc" class="square-container_img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </am-panel>
-    <!--/ am-panel -->
-
-    <!-- am-panel -->
-    <am-panel title="打印区图片">
-        <div slot="body">
-            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('printing')" :disabled="!veditorReady">上传图片</button>
-            <div class="am-g">
-                <div class="am-u-md-1 am-margin-top" 
-                    :class="{'am-u-end': $index == model.printing.length - 1}" 
-                    v-for="imgSrc in model.printing" track-by="$index">
-
-                    <div class="square-container">
-                        <div class="square-container_inner">
-                            <a href="#" @click.prevent="removeImage('printing', $index)" style="position:absolute;right:4px;">
-                                <i class="am-icon-trash am-text-warning"></i>
-                            </a>
-                            <img :src="imgSrc" class="square-container_img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </am-panel>
-    <!--/ am-panel -->
-
-    <!-- am-panel -->
-    <am-panel title="免费Wifi图片">
-        <div slot="body">
-            <button class="am-btn am-btn-default am-btn-sm" @click="openUploadDialog('wifi')" :disabled="!veditorReady">上传图片</button>
-            <div class="am-g">
-                <div class="am-u-md-1 am-margin-top" 
-                    :class="{'am-u-end': $index == model.wifi.length - 1}" 
-                    v-for="imgSrc in model.wifi" track-by="$index">
-
-                    <div class="square-container">
-                        <div class="square-container_inner">
-                            <a href="#" @click.prevent="removeImage('wifi', $index)" style="position:absolute;right:4px;">
-                                <i class="am-icon-trash am-text-warning"></i>
-                            </a>
-                            <img :src="imgSrc" class="square-container_img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </am-panel>
-    <!--/ am-panel -->
-
-    <am-panel>
-        <div slot="body">
-            <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-save"></i> 保存</button>
-        </div>
-    </am-panel>
+            <form-submit @submit="submit"></form-submit>
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

@@ -1,181 +1,172 @@
 
 <div>
+    <!-- mainview -->
+    <mainview :title="isNew ? '新建' : '编辑'">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>创客之家</breadcrumb-item>
+            <breadcrumb-item link="/ckzj/cyfd">创业辅导</breadcrumb-item>
+            <breadcrumb-item>{{isNew ? '新建' : '编辑'}}</breadcrumb-item>
+        </breadcrumb>
 
-    <!-- navbar -->
-    <header class="am-topbar">
-        <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li>
-                <a v-link="{path: '/ckzj/cyfd'}">
-                    <i class="am-icon-list"></i> 导师列表
-                </a>
-            </li>
-        </ul>
-    </header>
-    <!-- navbar -->
-    <div class="am-g">
-        <!-- am-panel -->
-        <am-panel title="导师基本信息">
-            <div slot="body">
-                <form class="am-form">
-                    <div class="am-g am-margin-top" v-if="model.id">
-                        <div class="am-u-md-2 am-text-right">
-                            <b>ID</b>
-                        </div>
-                        <div class="am-u-md-4 am-u-end">
-                            {{model.id}}
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            标签
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <v-select2 :options="tagOptions" :model.sync="model.tags"></v-select2>
-                        </div>
-                    </div>
-                    <!-- 
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            照片URL
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.title" class="am-input-sm" placeholder="标题">
-                        </div>
-                    </div>
-                     -->
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            姓名
-                        </div>
-                        <div class="am-u-md-2 am-u-end">
-                            <input type="text" v-model="model.name" class="am-input-sm" placeholder="姓名">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            性别
-                        </div>
-                        <div class="am-u-md-2 am-u-end">
-                            <select v-model="model.gender">
-                                <option v-for="item in genders" value="{{$key}}">{{item}}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            生日
-                        </div>
-                        <div class="am-u-md-2 am-u-end">
-                            <input type="text" v-model="model.birth" class="am-input-sm" placeholder="生日">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            居住地
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.address" class="am-input-sm" placeholder="居住地">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            学历
-                        </div>
-                        <div class="am-u-md-2 am-u-end">
-                            <select v-model="model.education">
-                                <option v-for="item in educations" value="{{$key}}">{{item}}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            毕业院校
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.school" class="am-input-sm" placeholder="毕业院校">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            单位
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.department" class="am-input-sm" placeholder="单位">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            职称
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.title" class="am-input-sm" placeholder="职称">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            辅导条件
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.requirement" class="am-input-sm" placeholder="辅导条件">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            报酬方式
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.reward" class="am-input-sm" placeholder="报酬方式">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            导师寄语
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.wishes" class="am-input-sm" placeholder="导师寄语">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            联系方式
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.contact" class="am-input-sm" placeholder="联系方式">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            推荐语
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.recommend" class="am-input-sm" placeholder="推荐语">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            辅导企业数量
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <input type="text" v-model="model.number" class="am-input-sm" placeholder="辅导企业数量">
-                        </div>
-                    </div>
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-2 am-text-right">
-                            详情介绍
-                        </div>
-                        <div class="am-u-md-6 am-u-end">
-                            <veditor :content.sync="model.detail"></veditor>
-                        </div>
-                    </div>
+        <!-- mainview-body -->
+        <template>
+            <am-panel title="导师信息">
+                <div class="am-g">
+                    <div class="am-u-md-9 am-u-md-centered">
+                        <form class="am-form am-form-horizontal">
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">标签</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <v-select2 :options="tagOptions" :model.sync="model.tags"></v-select2>
+                                </div>
+                            </div>
+                            <!-- 
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">照片URL</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.title" placeholder="标题">
+                                </div>
+                            </div>
+                             -->
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">姓名</label>
+                                </div>
+                                <div class="am-u-md-3 am-u-end">
+                                    <input type="text" v-model="model.name" placeholder="姓名">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">性别</label>
+                                </div>
+                                <div class="am-u-md-3 am-u-end">
+                                    <select v-model="model.gender">
+                                        <option v-for="item in genders" value="{{$key}}">{{item}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">生日</label>
+                                </div>
+                                <div class="am-u-md-3 am-u-end">
+                                    <input type="text" v-model="model.birth" placeholder="生日">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">居住地</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.address" placeholder="居住地">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">学历</label>
+                                </div>
+                                <div class="am-u-md-3 am-u-end">
+                                    <select v-model="model.education">
+                                        <option v-for="item in educations" value="{{$key}}">{{item}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">毕业院校</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.school" placeholder="毕业院校">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">单位</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.department" placeholder="单位">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">职称</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.title" placeholder="职称">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">辅导条件</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.requirement" placeholder="辅导条件">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">报酬方式</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.reward" placeholder="报酬方式">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">导师寄语</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.wishes" placeholder="导师寄语">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">联系方式</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.contact" placeholder="联系方式">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">推荐语</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.recommend" placeholder="推荐语">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">辅导企业数量</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input type="text" v-model="model.number" placeholder="辅导企业数量">
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">详情介绍</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <veditor :content.sync="model.detail"></veditor>
+                                </div>
+                            </div>
 
-                    <div class="am-g am-margin-top">
-                        <div class="am-u-md-offset-2 am-u-md-8 am-u-end">
-                            <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-save"></i> 保存</button>
-                        </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-10 am-u-md-offset-2">
+                                    <form-submit @submit="submit"></form-submit>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
-        </am-panel>
-        <!-- am-panel -->
-    </div>
+                </div>
+            </am-panel>
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

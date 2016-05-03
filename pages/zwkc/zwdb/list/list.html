@@ -1,22 +1,21 @@
 
 <div>
+    <!-- mainview -->
+    <mainview title="政务代办">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>政务快车</breadcrumb-item>
+            <breadcrumb-item>政务代办</breadcrumb-item>
+        </breadcrumb>
 
-    <!-- navbar -->
-    <header class="am-topbar">
-        <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li>
-                <a v-link="{path: '/zwkc/zwdb/edit'}">
-                    <i class="am-icon-plus"></i> 创建 
-                </a>
-            </li>
-        </ul>
-    </header>
-    <!-- navbar -->
-
-    <am-panel title="代办列表">
-        <div slot="body">
-
-            <table class="am-table">
+        <!-- mainview-body -->
+        <template>
+            <a v-link="{path: '/zwkc/zwdb/edit'}" class="am-btn am-btn-default am-btn-sm am-margin-bottom">
+                <i class="am-icon-plus"></i> 新增
+            </a>
+            
+            <!-- data list -->
+            <table class="am-table am-table-hover am-table-well am-text-nowrap">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -48,6 +47,7 @@
             </table>
 
             <pager :page="$route.query.page" :total="totalCount" :route="$route"></pager>
-        </div>
-    </am-panel>
+            <!--/ data list -->
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

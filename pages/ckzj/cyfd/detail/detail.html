@@ -1,221 +1,222 @@
 
-<div class="am-g">
+<div>
+    <!-- mainview -->
+    <mainview title="导师详情">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>创客之家</breadcrumb-item>
+            <breadcrumb-item link="/ckzj/cyfd">创业辅导</breadcrumb-item>
+            <breadcrumb-item>导师详情</breadcrumb-item>
+        </breadcrumb>
 
-    <div class="am-u-md-12">
-        <!-- navbar -->
-        <header class="am-topbar">
-            <ul class="am-nav am-nav-pills am-topbar-nav">
-                <li>
-                    <a v-link="{path: '/ckzj/cyfd'}">
-                        <i class="am-icon-list"></i> 导师列表
-                    </a>
-                </li>
-            </ul>
-        </header>
-        <!-- navbar -->
-        <!-- am-panel -->
-        <am-panel title="导师基本信息">
-            <div slot="body">
-                
-                <div class="am-g am-margin-top" v-if="model.id">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>ID</b>
-                    </div>
-                    <div class="am-u-md-4 am-u-end">
-                        {{model.id}}
-                    </div>
+        <!-- mainview-body -->
+        <template>
+
+            <div class="am-g am-g-c">
+                <div class="am-u-md-12">
+                    <!-- am-panel -->
+                    <am-panel title="导师基本信息">
+                        <div>
+                            
+                            <div class="am-g am-margin-top" v-if="model.id">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>ID</b>
+                                </div>
+                                <div class="am-u-md-4 am-u-end">
+                                    {{model.id}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>标签</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    <span class="am-badge am-badge-warning am-radius am-margin-right-xs" v-for="item in model.tags">
+                                        {{item.tag}}
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- 
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    照片URL
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    <input type="text" v-model="model.title" class="am-input-sm" placeholder="标题">
+                                </div>
+                            </div>
+                             -->
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>姓名</b>
+                                </div>
+                                <div class="am-u-md-2 am-u-end">
+                                    {{model.name}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>性别</b>
+                                </div>
+                                <div class="am-u-md-2 am-u-end">
+                                    {{model.gender | dict 'gender'}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>生日</b>
+                                </div>
+                                <div class="am-u-md-2 am-u-end">
+                                    {{model.birth}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>居住地</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.address}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>学历</b>
+                                </div>
+                                <div class="am-u-md-2 am-u-end">
+                                    {{model.education | dict 'education'}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>毕业院校</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.school}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>单位</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.department}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>职称</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.title}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>辅导条件</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.requirement}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>报酬方式</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.reward}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>导师寄语</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.wishes}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>联系方式</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.contact}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>推荐语</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.recommend}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>发布时间</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.time}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>辅导企业数量</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{model.number}}
+                                </div>
+                            </div>
+                            <div class="am-g am-margin-top">
+                                <div class="am-u-md-2 am-text-right">
+                                    <b>详情介绍</b>
+                                </div>
+                                <div class="am-u-md-6 am-u-end">
+                                    {{{model.detail}}}
+                                </div>
+                            </div>
+                        </div>
+                    </am-panel>
+                    <!-- am-panel -->
                 </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>标签</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        <span class="am-badge am-badge-warning am-radius am-margin-right-xs" v-for="item in model.tags">
-                            {{item.tag}}
-                        </span>
-                    </div>
+
+                <div class="am-u-md-6">
+                    <am-panel title="咨询信息">
+                        <ul class="am-list am-list-static">
+                            <li v-for="consult in consults" track-by="id">
+                                <span class="am-badge am-badge-danger cursor-pointer" @click="removeConsult(consult.id)">
+                                    <i class="am-icon-remove am-icon-fw"></i>
+                                </span>
+                                <span class="am-badge am-badge-warning cursor-pointer" @click="editConsult(consult.id)">
+                                    <i class="am-icon-edit am-icon-fw"></i>
+                                </span>
+                                
+                                <div class="am-text-truncate">{{consult.title}}</div>
+
+                                <small>发表于 {{consult.time}}</small>
+                            </li>
+                        </ul>
+                        <pager :total="consultsCount" @paginate.pager="onConsultPaginate" v-ref:consult-pager></pager>
+                    </am-panel>
                 </div>
-                <!-- 
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        照片URL
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        <input type="text" v-model="model.title" class="am-input-sm" placeholder="标题">
-                    </div>
-                </div>
-                 -->
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>姓名</b>
-                    </div>
-                    <div class="am-u-md-2 am-u-end">
-                        {{model.name}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>性别</b>
-                    </div>
-                    <div class="am-u-md-2 am-u-end">
-                        {{model.gender | dict 'gender'}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>生日</b>
-                    </div>
-                    <div class="am-u-md-2 am-u-end">
-                        {{model.birth}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>居住地</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.address}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>学历</b>
-                    </div>
-                    <div class="am-u-md-2 am-u-end">
-                        {{model.education | dict 'education'}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>毕业院校</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.school}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>单位</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.department}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>职称</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.title}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>辅导条件</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.requirement}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>报酬方式</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.reward}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>导师寄语</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.wishes}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>联系方式</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.contact}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>推荐语</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.recommend}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>发布时间</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.time}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>辅导企业数量</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{model.number}}
-                    </div>
-                </div>
-                <div class="am-g am-margin-top">
-                    <div class="am-u-md-2 am-text-right">
-                        <b>详情介绍</b>
-                    </div>
-                    <div class="am-u-md-6 am-u-end">
-                        {{{model.detail}}}
-                    </div>
+                <div class="am-u-md-6">
+                    <!-- am-panel -->
+                    <am-panel title="评价信息">
+                        <ul class="am-list am-list-static">
+                            <li v-for="evaluation in evaluations" track-by="id">
+                                <span class="am-badge am-badge-danger cursor-pointer" @click="removeEvaluation(evaluation.id)">
+                                    <i class="am-icon-remove am-icon-fw"></i>
+                                </span>
+                                
+                                <div class="am-text-truncate">{{evaluation.content}}</div>
+                                
+                                <small>{{evaluation.user}} 发表于 {{evaluation.time}}</small>
+                            </li>
+                        </ul>
+                        <pager :total="evaluationsCount" @paginate.pager="onEvaluationPaginate" v-ref:evaluation-pager></pager>
+                    </am-panel>
                 </div>
             </div>
-        </am-panel>
-        <!-- am-panel -->
-    </div>
-
-    <div class="am-u-md-6">
-        <am-panel title="咨询信息">
-            <div slot="body">
-                <ul class="am-list am-list-static">
-                    <li v-for="consult in consults" track-by="id">
-                        <span class="am-badge am-badge-danger cursor-pointer" @click="removeConsult(consult.id)">
-                            <i class="am-icon-remove am-icon-fw"></i>
-                        </span>
-                        <span class="am-badge am-badge-warning cursor-pointer" @click="editConsult(consult.id)">
-                            <i class="am-icon-edit am-icon-fw"></i>
-                        </span>
-                        
-                        <div class="am-text-truncate">{{consult.title}}</div>
-
-                        <small>发表于 {{consult.time}}</small>
-                    </li>
-                </ul>
-                <pager :total="consultsCount" @paginate.pager="onConsultPaginate" v-ref:consult-pager></pager>
-            </div>
-        </am-panel>
-    </div>
-    <div class="am-u-md-6">
-        <!-- am-panel -->
-        <am-panel title="评价信息">
-            <div slot="body">
-                <ul class="am-list am-list-static">
-                    <li v-for="evaluation in evaluations" track-by="id">
-                        <span class="am-badge am-badge-danger cursor-pointer" @click="removeEvaluation(evaluation.id)">
-                            <i class="am-icon-remove am-icon-fw"></i>
-                        </span>
-                        
-                        <div class="am-text-truncate">{{evaluation.content}}</div>
-                        
-                        <small>{{evaluation.user}} 发表于 {{evaluation.time}}</small>
-                    </li>
-                </ul>
-                <pager :total="evaluationsCount" @paginate.pager="onEvaluationPaginate" v-ref:evaluation-pager></pager>
-            </div>
-        </am-panel>
-    </div>
+            
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

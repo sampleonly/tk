@@ -1,9 +1,18 @@
 
 <div>
-    <am-panel title="列表">
-        <div slot="body">
+    <!-- mainview -->
+    <mainview title="贷款市集">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>融资保险</breadcrumb-item>
+            <breadcrumb-item>贷款市集</breadcrumb-item>
+        </breadcrumb>
 
-            <table class="am-table">
+        <!-- mainview-body -->
+        <template>
+            
+            <!-- data list -->
+            <table class="am-table am-table-hover am-table-well am-text-nowrap">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -41,6 +50,7 @@
             </table>
 
             <pager :page="$route.query.page" :total="totalCount" :route="$route"></pager>
-        </div>
-    </am-panel>
+            <!--/ data list -->
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

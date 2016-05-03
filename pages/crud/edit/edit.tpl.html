@@ -1,138 +1,134 @@
 
 <div>
     <!-- mainview -->
-    <mainview>
-        <!-- mainview-header -->
-        <div slot="header">
-            <div class="am-g am-g-collapse">
-                <div class="am-u-sm-6">
-                    <h1 class="am-align-left">{{isNew() ? '创建xx' : '编辑xx'}}</h1>
-                </div>
-                <div class="am-u-sm-6">
-                    <ol class="am-breadcrumb am-margin-0 am-link-muted am-fr">
-                        <li><a v-link="{path:'/'}" class="am-icon-home">首页</a></li>
-                        <li><a v-link="{path:'/crud'}">CRUD</a></li>
-                        <li class="am-active">{{isNew() ? '创建' : '编辑'}}</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!--/ mainview-header -->
+    <mainview :title="pageTitle">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item link="/crud">CRUD</breadcrumb-item>
+            <breadcrumb-item>{{pageTitle}}</breadcrumb-item>
+        </breadcrumb>
 
         <!-- mainview-body -->
-        <div>
+        <template>
 
+            <am-panel title="全宽">
+                <!-- form container -->
+                <div class="am-g">
+                    <div class="am-u-md-10 am-u-md-offset-1">
+                        <!-- form -->
+                        <validator name="v0">
+                        <form class="am-form am-form-horizontal">
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">标题</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.title" type="text" placeholder="输入标题" v-validate:title="{required: true}">
+                                    <span class="form-group-msg" v-if="$v0.title.touched && $v0.title.invalid">请输入标题!</span>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">内容内容</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.content" type="text" placeholder="输入内容" v-validate:content="{required: true}">
+                                    <span class="form-group-msg" v-if="$v0.content.touched && $v0.content.invalid">请输入内容!</span>
+                                </div>
+                            </div>
 
+                            <div class="am-form-group">
+                                <div class="am-u-md-10 am-u-md-offset-2">
+                                    <form-submit @submit="submit" :disabled="!$v0.valid"></form-submit>
+                                </div>
+                            </div>
+                        </form>
+                        </validator>
+                        <!--/ form -->
+                    </div>
+                </div><!--/ form container -->
+            </am-panel>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- form wrapper -->
+            <!-- form container -->
             <div class="am-g am-g-c">
                 <!-- cols -->
                 <div class="am-u-md-6">
-                    <div class="am-panel am-panel-default">
-                        <div class="am-panel-hd">
-                            垂直
-                        </div>
-                        <div class="am-panel-bd">
-                            <!-- form -->
-                            <validator name="v1">
-                            <form class="am-form">
-                                <div class="am-form-group">
-                                    <label class="am-form-label">标题</label>
-                                    <input v-model="model.title" type="text" placeholder="输入标题" v-validate:title="{required: true}">
-                                    <span class="form-group-msg" v-if="$v1.title.touched && $v1.title.invalid">请输入标题!</span>
-                                    
-                                    valid : {{$v1.title.valid}} <br>
-                                    touched : {{$v1.title.touched}} <br>
-                                    undefined : {{$v1.title.undefined}} <br>
-                                    dirty : {{$v1.title.dirty}} <br>
-                                    pristine : {{$v1.title.pristine}} <br>
-                                    modified : {{$v1.title.modified}} <br>
-                                    
-                                </div>
-                                <div class="am-form-group">
-                                    <label class="am-form-label">内容</label>
-                                    <input v-model="model.content" type="text" placeholder="输入内容" v-validate:content="{required: true}">
-                                    <span class="form-group-msg" v-if="$v1.content.touched && $v1.content.invalid">请输入内容!</span>
-                                </div>
-
-                                <div class="am-cf">
-                                    <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm am-fr" :disabled="!$v1.valid"><i class="am-icon-save"></i> 保存</button>
-                                </div>
-
-                                valid : {{$v1.valid}} <br>
-                                touched : {{$v1.touched}} <br>
-                                undefined : {{$v1.undefined}} <br>
-                                dirty : {{$v1.dirty}} <br>
-                                pristine : {{$v1.pristine}} <br>
-                                modified : {{$v1.modified}} <br>
+                    <am-panel title="半屏宽-垂直">
+                        <!-- form -->
+                        <validator name="v1">
+                        <form class="am-form">
+                            <div class="am-form-group">
+                                <label class="am-form-label">标题</label>
+                                <input v-model="model.title" type="text" placeholder="输入标题" v-validate:title="{required: true}">
+                                <span class="form-group-msg" v-if="$v1.title.touched && $v1.title.invalid">请输入标题!</span>
                                 
-                            </form>
-                            </validator>
-                            <!--/ form -->
-                        </div>
-                    </div>
+                                valid : {{$v1.title.valid}} <br>
+                                touched : {{$v1.title.touched}} <br>
+                                undefined : {{$v1.title.undefined}} <br>
+                                dirty : {{$v1.title.dirty}} <br>
+                                pristine : {{$v1.title.pristine}} <br>
+                                modified : {{$v1.title.modified}} <br>
+                                
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-form-label">内容</label>
+                                <input v-model="model.content" type="text" placeholder="输入内容" v-validate:content="{required: true}">
+                                <span class="form-group-msg" v-if="$v1.content.touched && $v1.content.invalid">请输入内容!</span>
+                            </div>
+
+                            <div class="am-cf">
+                                <form-submit @submit="submit" :disabled="!$v1.valid"></form-submit>
+                            </div>
+
+                            valid : {{$v1.valid}} <br>
+                            touched : {{$v1.touched}} <br>
+                            undefined : {{$v1.undefined}} <br>
+                            dirty : {{$v1.dirty}} <br>
+                            pristine : {{$v1.pristine}} <br>
+                            modified : {{$v1.modified}} <br>
+                            
+                        </form>
+                        </validator>
+                        <!--/ form -->
+                    </am-panel>
                 </div><!-- cols -->
                 <!-- cols -->
                 <div class="am-u-md-6">
-                    <div class="am-panel am-panel-default">
-                        <div class="am-panel-hd">
-                            水平
-                        </div>
-                        <div class="am-panel-bd">
-                            <!-- form -->
-                            <validator name="v2">
-                            <form class="am-form am-form-horizontal">
-                                <div class="am-form-group">
-                                    <div class="am-u-md-2">
-                                        <label class="am-form-label">标题</label>
-                                    </div>
-                                    <div class="am-u-md-10">
-                                        <input v-model="model.title" type="text" placeholder="输入标题" v-validate:title="{required: true}">
-                                        <span class="form-group-msg" v-if="$v2.title.touched && $v2.title.invalid">请输入标题!</span>
-                                    </div>
+                    <am-panel title="半屏宽-水平">
+                        <!-- form -->
+                        <validator name="v2">
+                        <form class="am-form am-form-horizontal">
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">标题</label>
                                 </div>
-                                <div class="am-form-group">
-                                    <div class="am-u-md-2">
-                                        <label class="am-form-label">内容内容</label>
-                                    </div>
-                                    <div class="am-u-md-10">
-                                        <input v-model="model.content" type="text" placeholder="输入内容" v-validate:content="{required: true}">
-                                        <span class="form-group-msg" v-if="$v2.content.touched && $v2.content.invalid">请输入内容!</span>
-                                    </div>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.title" type="text" placeholder="输入标题" v-validate:title="{required: true}">
+                                    <span class="form-group-msg" v-if="$v2.title.touched && $v2.title.invalid">请输入标题!</span>
                                 </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-2">
+                                    <label class="am-form-label">内容内容</label>
+                                </div>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.content" type="text" placeholder="输入内容" v-validate:content="{required: true}">
+                                    <span class="form-group-msg" v-if="$v2.content.touched && $v2.content.invalid">请输入内容!</span>
+                                </div>
+                            </div>
 
-                                <div class="am-form-group">
-                                    <div class="am-u-md-12">
-                                        <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm am-fr"><i class="am-icon-save"></i> 保存</button>
-                                    </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-12">
+                                    <form-submit @submit="submit" :disabled="!$v1.valid" class="am-fr"></form-submit>
                                 </div>
-                            </form>
-                            </validator>
-                            <!--/ form -->
-                        </div>
-                    </div>
+                            </div>
+                        </form>
+                        </validator>
+                        <!--/ form -->
+                    </am-panel>
                 </div><!-- cols -->
             </div>
             <!--/ form wrapper -->
-        </div><!--/ mainview-body -->
+        </template><!--/ mainview-body -->
     </mainview><!--/ mainview -->
 </div>

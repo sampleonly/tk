@@ -1,115 +1,117 @@
-
 <div>
-    <!-- am-panel -->
-    <am-panel title="编辑">
-        <div slot="body">
-            <!-- form wrapper -->
-            <div class="am-g">
-                <div class="am-u-md-9 am-u-md-centered">
-                    <!-- form -->
-                    <form class="am-form am-form-horizontal">
-                        <!-- <fieldset><legend>fieldset title</legend></fieldset> -->
-                        <div class="am-form-group" v-if="model.id">
-                            <label class="am-form-label am-u-md-2">ID</label>
-                            <div class="am-u-md-10">
-                                <input v-model="model.id" type="text" readonly>    
-                            </div>
-                        </div>
+    <!-- mainview -->
+    <mainview title="编辑">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>小二跑腿</breadcrumb-item>
+            <breadcrumb-item link='/xept/ygpx'>员工培训</breadcrumb-item>
+            <breadcrumb-item>编辑</breadcrumb-item>
+        </breadcrumb>
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">标题</label>
-                            <div class="am-u-md-10">
-                                <input v-model="model.title" type="text" disabled>
+        <!-- mainview-body -->
+        <template>
+            <am-panel title="基础信息">
+                <div class="am-g">
+                    <div class="am-u-md-10 am-u-md-offset-1">
+                        <form class="am-form am-form-horizontal">
+                            <div class="am-form-group" v-if="model.id">
+                                <label class="am-form-label am-u-md-2">ID</label>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.id" type="text" readonly>    
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">公司名称</label>
-                            <div class="am-u-md-10">
-                                <input v-model="model.company" type="text" disabled>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">标题</label>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.title" type="text" disabled>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">手机号码</label>
-                            <div class="am-u-md-10">
-                                <input v-model="model.mobile" type="text" disabled>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">公司名称</label>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.company" type="text" disabled>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">联系人</label>
-                            <div class="am-u-md-10">
-                                <input v-model="model.name" type="text" disabled>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">手机号码</label>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.mobile" type="text" disabled>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">备注描述</label>
-                            <div class="am-u-md-10">
-                            <textarea rows="3" disabled>{{model.memo}}</textarea>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">联系人</label>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.name" type="text" disabled>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">所属行业</label>
-                            <div class="am-u-md-10">
-                                <input value="{{model.industry | dict 'industry'}}" type="text" disabled>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">备注描述</label>
+                                <div class="am-u-md-10">
+                                <textarea rows="3" disabled>{{model.memo}}</textarea>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">数量</label>
-                            <div class="am-u-md-10">
-                                <input v-model="model.quantity" type="text" disabled>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">所属行业</label>
+                                <div class="am-u-md-10">
+                                    <input value="{{model.industry | dict 'industry'}}" type="text" disabled>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">培训周期</label>
-                            <div class="am-u-md-10">
-                                <input v-model="model.days" type="text" disabled>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">数量</label>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.quantity" type="text" disabled>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">发布时间</label>
-                            <div class="am-u-md-10">
-                                <input type="text" value="{{model.time}}" disabled>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">游览量</label>
-                            <div class="am-u-md-10">
-                                <input type="text" value="{{model.count}}" disabled>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">发布者</label>
-                            <div class="am-u-md-10">
-                                <input type="text" value="{{model.user}}" disabled>
-                            </div>
-                        </div>
-                        <div class="am-form-group">
-                            <label class="am-form-label am-u-md-2">状态</label>
-                            <div class="am-u-md-10">
-                                <select v-model="model.state">
-                                    <option v-for="item in $root.dict['xept.state']" value="{{$key}}">{{item}}</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="am-form-group">
-                            <div class="am-u-md-10 am-u-md-offset-2">
-                                <button @click.prevent="submit" class="am-btn am-btn-default am-btn-sm"><i class="am-icon-save"></i> 保存</button>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">培训周期</label>
+                                <div class="am-u-md-10">
+                                    <input v-model="model.days" type="text" disabled>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                    <!--/ form -->
+                            
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">发布时间</label>
+                                <div class="am-u-md-10">
+                                    <input type="text" value="{{model.time}}" disabled>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">游览量</label>
+                                <div class="am-u-md-10">
+                                    <input type="text" value="{{model.count}}" disabled>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">发布者</label>
+                                <div class="am-u-md-10">
+                                    <input type="text" value="{{model.user}}" disabled>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <label class="am-form-label am-u-md-2">状态</label>
+                                <div class="am-u-md-10">
+                                    <select v-model="model.state">
+                                        <option v-for="item in $root.dict['xept.state']" value="{{$key}}">{{item}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="am-form-group">
+                                <div class="am-u-md-10 am-u-md-offset-2">
+                                    <form-submit @submit="submit"></form-submit>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <!--/ form wrapper -->
-        </div>
-    </am-panel>
-    <!--/ am-panel -->
+            </am-panel>
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>

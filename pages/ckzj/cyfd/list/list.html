@@ -1,21 +1,21 @@
 
 <div>
+    <!-- mainview -->
+    <mainview title="创业辅导">
+        <breadcrumb slot="breadcrumb">
+            <breadcrumb-item link="/" class="am-icon-home">首页</breadcrumb-item>
+            <breadcrumb-item>创客之家</breadcrumb-item>
+            <breadcrumb-item>创业辅导</breadcrumb-item>
+        </breadcrumb>
 
-    <!-- navbar -->
-    <header class="am-topbar">
-        <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li>
-                <a v-link="{name: 'ckzj-cyfd-new'}">
-                    <i class="am-icon-plus"></i> 新增
-                </a>
-            </li>
-        </ul>
-    </header>
+        <!-- mainview-body -->
+        <template>
+            <a v-link="{name: 'ckzj-cyfd-new'}" class="am-btn am-btn-default am-btn-sm am-margin-bottom">
+                <i class="am-icon-plus"></i> 新增
+            </a>
 
-    <am-panel title="导师列表">
-        <div slot="body">
-
-            <table class="am-table">
+            <!-- data list -->
+            <table class="am-table am-table-hover am-table-well am-text-nowrap">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -54,6 +54,8 @@
             </table>
 
             <pager :page="$route.query.page" :total="totalCount" :route="$route"></pager>
-        </div>
-    </am-panel>
+            <!--/ data list -->
+            
+        </template><!--/ mainview-body -->
+    </mainview><!--/ mainview -->
 </div>
