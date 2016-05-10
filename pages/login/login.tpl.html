@@ -5,7 +5,11 @@
 
             <validator name="validation">
 
-                <form class="am-form" action="#" @submit.prevent="submit($validation)">
+                <form class="am-form" action="#" @submit.prevent="submit()">
+                
+                    <!-- prevent chrome username&password autofill -->
+                    <input style="display:none" type="text" name="fakeusernameremembered" />
+                    <input style="display:none" type="password" name="fakepasswordremembered" />
                     
                     <div class="am-form-group am-form-icon">
                         <i class="am-icon-user"></i>
