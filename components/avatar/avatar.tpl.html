@@ -1,0 +1,24 @@
+
+<div class="avatar">
+
+    <img :src="img" class="avatar_img" v-if="img">
+    <img src="imgs/default-avatar.png" class="avatar_img" v-else>
+    
+        <!-- <vue-cropper img="mock/imgs/1.jpg" class="avatar_cropper" v-ref:cropper></vue-cropper>     -->
+
+    <label class="avatar_fileinput">
+        <input type="file" name="avatar" v-el:file-input>
+    </label>
+
+    <am-modal :show.sync="showModal">
+        <span slot="header">编辑头像</span>
+        
+        <am-panel>
+            <vue-cropper class="avatar_cropper" v-ref:cropper></vue-cropper>
+            <div slot="footer" class="am-text-right">
+                <a href="#" @click.prevent="cancel">取消</a> &nbsp;&nbsp;
+                <button class="am-btn am-btn-default" @click.prevent="save">确定</button>
+            </div>
+        </am-panel>
+    </am-modal>
+</div>

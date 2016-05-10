@@ -1,10 +1,12 @@
 <div>
     <div class="am-modal" v-bind:class="{'am-modal-active': show, 'am-modal-lg': lg}" v-show="show">
         <div class="am-modal-dialog">
-            <slot name="header"></slot>
+            <div class="am-modal-hd">
+                <slot name="header"></slot>
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
             <slot></slot>
             <slot name="footer"></slot>
         </div>
     </div>
-    <!-- <div class="am-dimmer" v-bind:class="{'am-active': show}" v-show="show" v-on:click="close" transition="modal-fade"></div> -->
 </div>
