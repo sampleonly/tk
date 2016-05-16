@@ -1,0 +1,1 @@
+define("pages/xept/sbtj/api",function(t,e,n){"use strict";var i=t("api/_xhr"),r=t("vendors/uri/URI");n.exports={remove:function(t){return i.del(r.expand("/xept/sbtj/{id}",{id:t}))},update:function(t){return i.put(r.expand("/xept/sbtj/{id}",{id:t.id}),t)},get:function(t){return i.get(r.expand("/xept/sbtj/{id}",{id:t}))},fetch:function(t){return i.get("/xept/sbtj",t)}}});

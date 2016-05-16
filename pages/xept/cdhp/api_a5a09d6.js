@@ -1,0 +1,1 @@
+define("pages/xept/cdhp/api",function(e,t,d){"use strict";var n=e("api/_xhr"),p=e("vendors/uri/URI");d.exports={remove:function(e){return n.del(p.expand("/xept/cdhp/{id}",{id:e}))},update:function(e){return n.put(p.expand("/xept/cdhp/{id}",{id:e.id}),e)},get:function(e){return n.get(p.expand("/xept/cdhp/{id}",{id:e}))},fetch:function(e){return n.get("/xept/cdhp",e)}}});

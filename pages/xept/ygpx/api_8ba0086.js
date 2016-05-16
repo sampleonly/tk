@@ -1,0 +1,1 @@
+define("pages/xept/ygpx/api",function(e,t,n){"use strict";var p=e("api/_xhr"),i=e("vendors/uri/URI");n.exports={remove:function(e){return p.del(i.expand("/xept/ygpx/{id}",{id:e}))},update:function(e){return p.put(i.expand("/xept/ygpx/{id}",{id:e.id}),e)},get:function(e){return p.get(i.expand("/xept/ygpx/{id}",{id:e}))},fetch:function(e){return p.get("/xept/ygpx",e)}}});

@@ -1,0 +1,1 @@
+define("pages/xept/cfzs/api",function(e,t,n){"use strict";var i=e("api/_xhr"),r=e("vendors/uri/URI");n.exports={remove:function(e){return i.del(r.expand("/xept/cfzs/{id}",{id:e}))},update:function(e){return i.put(r.expand("/xept/cfzs/{id}",{id:e.id}),e)},get:function(e){return i.get(r.expand("/xept/cfzs/{id}",{id:e}))},fetch:function(e){return i.get("/xept/cfzs",e)}}});

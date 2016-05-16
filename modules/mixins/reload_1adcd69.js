@@ -1,0 +1,1 @@
+define("mixins/reload",function(t,e,r){"use strict";var o=t("vendors/uri/URI");r.exports={methods:{reload:function(){this.$route.router.go({path:o(this.$route.path).setQuery({_r:(new Date).getTime()}).toString()})}}}});

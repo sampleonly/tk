@@ -1,0 +1,1 @@
+define("pages/xept/gqzr/api",function(e,t,r){"use strict";var n=e("api/_xhr"),i=e("vendors/uri/URI");r.exports={remove:function(e){return n.del(i.expand("/xept/gqzr/{id}",{id:e}))},update:function(e){return n.put(i.expand("/xept/gqzr/{id}",{id:e.id}),e)},get:function(e){return n.get(i.expand("/xept/gqzr/{id}",{id:e}))},fetch:function(e){return n.get("/xept/gqzr",e)}}});

@@ -1,0 +1,1 @@
+define("pages/xept/qmch/api",function(e,t,n){"use strict";var i=e("api/_xhr"),r=e("vendors/uri/URI");n.exports={remove:function(e){return i.del(r.expand("/xept/qmch/{id}",{id:e}))},update:function(e){return i.put(r.expand("/xept/qmch/{id}",{id:e.id}),e)},get:function(e){return i.get(r.expand("/xept/qmch/{id}",{id:e}))},fetch:function(e){return i.get("/xept/qmch",e)}}});

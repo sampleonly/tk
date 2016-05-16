@@ -1,0 +1,1 @@
+define("pages/xept/zwdl/api",function(e,t,d){"use strict";var n=e("api/_xhr"),i=e("vendors/uri/URI");d.exports={remove:function(e){return n.del(i.expand("/xept/zwdl/{id}",{id:e}))},update:function(e){return n.put(i.expand("/xept/zwdl/{id}",{id:e.id}),e)},get:function(e){return n.get(i.expand("/xept/zwdl/{id}",{id:e}))},fetch:function(e){return n.get("/xept/zwdl",e)}}});

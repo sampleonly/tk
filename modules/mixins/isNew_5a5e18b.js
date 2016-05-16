@@ -1,0 +1,1 @@
+define("mixins/isNew",function(i,e,t){"use strict";t.exports={computed:{isNew:function(){return!(this.model.id||this.$route.params.id)}}}});
